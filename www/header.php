@@ -1,3 +1,8 @@
+<?php
+    include_once "../dbh/dbh.php";
+    include "../scripts/autoloader.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,9 +1,9 @@
 <?php
-    include "header.php"
+    include "header.php";
 ?>
 
     <main>
-        <div id="logo">Customers</div>
+        <div id="logo">Cars</div>
     </main>
 
     <footer>
