@@ -1,18 +1,7 @@
-<?php
-
-    include "header.php";
-    include_once "../scripts/add_customer.php";
-    //$customer = new Customer();
-    //unset($customer); // Deletes the instance
-
-
-
-
-?>
-
+<?php include "header.php";?>
     <main>
         <div id="logo">Add customer</div>
-        <form action="add_customer.php" method="POST">
+        <form action="../scripts/add_customer.php" method="POST">
             <input type="text" name="personnumber" placeholder="YYMMDD-XXXX"><br>
             <input type="text" name="name" placeholder="Name"><br>
             <input type="text" name="address" placeholder="Address"><br>
@@ -21,10 +10,7 @@
             <button type="submit" name="submit">Add</button>
         </form>
     </main>
-
     <footer>
-
     </footer>
 </body>
-
 </html>

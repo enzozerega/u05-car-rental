@@ -3,7 +3,7 @@ create database carrental;
 use carrental;
 
 create table customers (
-    person_number int(10) not null primary key,
+    person_number int(13) not null primary key,
     name varchar(256) not null,
     adress varchar(256) not null,
     postal_code int(5) not null,

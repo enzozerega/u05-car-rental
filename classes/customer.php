@@ -1,26 +1,17 @@
 <?php
-
-    class Customer {
-        // Properties
-        protected $personNumber;
-        protected $name;
-        protected $address;
-        protected $postalCode;
-        protected $phone;
-
-        protected function __construct($personNumber, $name, $address, $postalCode, $phone) {
-            $this->personNumber = $personNumber;
-            $this->name = $name;
-            $this->address = $address;
-            $this->postalCode = $postalCode;
-            $this->phone = $phone;
-        }
-        // Methods
-
-        public function __destruct() {
-            #Code for filling the table
+    include "dbh.php";
+    class Customer extends Dbh {
+        protected function getCustomer() {
+            $sql = "SELECT * FROM customers";
+            $statement = $this->connect()->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
         }
 
+        protected function setCustomer($personNumber, $name, $address, $postalCode, $phone) {
+            $sql = "INSERT INTO customers (person_number, name, adress, postal_code, phone) VALUES (?, ?, ?, ?, ?)";
+            $statement = $this->connect()->prepare($sql);
+            $statement->execute([$personNumber, $name, $address, $postalCode, $phone]);
+        }
     }
-
-?>

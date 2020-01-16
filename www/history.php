@@ -4,6 +4,10 @@
 
     <main>
         <div id="logo">History</div>
+        <?php
+            $historyItem = new History();
+            $historyItem->getHistory();
+        ?>
     </main>
 
     <footer>
