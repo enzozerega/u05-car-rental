@@ -8,8 +8,8 @@
             return $twig->render("customersView.twig", $map);
         }
 
-        public function addCostumer($twig) {
-            return $twig->render("addCostumerView.twig");
+        public function addCustomer($twig) {
+            return $twig->render("addCustomerView.twig");
         }
 
         public function insertCustomer($request, $twig) {
@@ -31,14 +31,14 @@
 
         public function editedCustomer($key, $twig) {
             $model = new Model();
-            $selectedCustomer = $model->editCostumer($key);
+            $selectedCustomer = $model->editCustomer($key);
             $map = ["selectedCustomer" => $selectedCustomer];
             return $twig->render("editCustomerView.twig", $map);
         }
 
         public function removeCustomer($key, $twig) {
             $selectedCustomer = new Model();
-            $selectedCustomer->deleteCostumer($key);
+            $selectedCustomer->deleteCustomer($key);
             echo "Customer removed";
             return $twig->render("customerRemovedView.twig");
         }
@@ -51,7 +51,7 @@
                 $address = $_POST['address'];
                 $postalcode = $_POST['postalcode'];
                 $phone = $_POST['phone'];
-                $selectedCustomer->updateCostumer($name, $address, $postalcode, $phone, $key);
+                $selectedCustomer->updateCustomer($name, $address, $postalcode, $phone, $key);
                 echo "The customer was successfully updated";
             } else {
                 echo "The customer coud not be updated";

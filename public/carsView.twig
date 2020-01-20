@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car rental - Cars</title>
+</head>
+
+<body>
+    <header>
+        <form method="post" action="/customers">
+            <input type="submit" value="Customers">
+        </form>
+        <form method="post" action="/cars">
+            <input type="submit" value="Cars">
+        </form>
+                <form method="post" action="/checkIn">
+            <input type="submit" value="Check in">
+        </form>
+        <form method="post" action="/CheckOut">
+            <input type="submit" value="Check out">
+        </form>
+                <form method="post" action="/history">
+            <input type="submit" value="History">
+        </form>
+        <form method="post" action="/">
+            <input type="submit" value="Home">
+        </form>
+    </header>
+    
+    <main>
+        <h1>Cars</h1>
+        <p>
+        <table>
+        <table>
+            <tr>
+                <th>Register number</th>
+                <th>Make</th>
+                <th>Color</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Checked in by</th>
+                <th>Checked out by</th>
+            </tr>
+          {% for car in carArray %}
+            <tr>
+                <td>{{car.register_number}}</td>
+                <td>{{car.make}}</td>
+                <td>{{car.color}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.price}}</td>
+                <td>{{car.checked_in}}</td>
+                <td>{{car.checked_out}}</td>
+                <td>
+                    <form method="post" action="/editCar{{car.register_number}}">
+                        <input type="submit" value="Edit Car">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/carRemoved{{car.register_number}}">
+                        <input type="submit" value="Remove Car">
+                    </form>
+                </td>
+            </tr>
+          {% endfor %}
+        </table>
+        <form method="post" action="/addCar">
+            <input type="submit" value="Add Car">
+        </form>
+    </main>

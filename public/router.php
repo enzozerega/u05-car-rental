@@ -18,7 +18,7 @@
                 return $controller->mainMenu($twig);
             } else if ($path == "/addCustomer") {
                 $controller = new CustomersController();
-                return $controller->addCostumer($twig);
+                return $controller->addCustomer($twig);
             } else if ($path == "/customerAdded") {
                 $controller = new CustomersController();
                 return $controller->insertCustomer($request, $twig);
@@ -34,9 +34,29 @@
                 $key = substr($path, 16, 26);
                 $controller = new CustomersController();
                 return $controller->removeCustomer($key, $twig);
+            } else if ($path == "/cars") {
+                $controller = new CarsController();
+                return $controller->showAllCars($twig);
+            } else if ($path == "/addCar") {
+                $controller = new CarsController();
+                return $controller->addCar($twig);
+            } else if ($path == "/carAdded") {
+                $controller = new CarsController();
+                return $controller->insertCar($request, $twig);
+            } else if (strpos($path, "carEdited") && preg_match('#[0-9]#', $path)) {
+                $controller = new CarsController();
+                $key = substr($path, 10, 16);
+                return $controller->updatedCar($request, $key, $twig);
+            } else if (strpos($path, "editCar") && preg_match('#[0-9]#', $path)) {
+                $key = substr($path, 8, 18);
+                $controller = new CarsController();
+                return $controller->editedCar($key, $twig);
+            } else if (strpos($path, "carRemoved") && preg_match('#[0-9]#', $path)) {
+                $key = substr($path, 11, 21);
+                $controller = new CarsController();
+                return $controller->removeCar($key, $twig);
             } else {
                 return "Router Error!";
             }
         }
-
     }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car rental - Edit car</title>
+</head>
+
+<body>
+    <header>
+        <form method="post" action="/customers">
+            <input type="submit" value="Customers">
+        </form>
+        <form method="post" action="/cars">
+            <input type="submit" value="Cars">
+        </form>
+                <form method="post" action="/checkIn">
+            <input type="submit" value="Check in">
+        </form>
+        <form method="post" action="/CheckOut">
+            <input type="submit" value="Check out">
+        </form>
+                <form method="post" action="/history">
+            <input type="submit" value="History">
+        </form>
+        <form method="post" action="/">
+            <input type="submit" value="Home">
+        </form>
+    </header>
+    
+    <main>
+        <h1>Edit car</h1>
+        <form method="POST" action="/carEdited{{selectedCar.register_number}}" >
+            <input type="text" name="registernumber" value="{{selectedCar.register_number}}" disabled><br>
+            <input type="text" name="make" value="{{selectedCar.make}}"><br>
+            <input type="text" name="color" value="{{selectedCar.color}}"><br>
+            <input type="text" name="year" value="{{selectedCar.year}}"><br>
+            <input type="text" name="price" value="{{selectedCar.price}}"><br>
+            <button type="submit" name="submit">Save changes</button>
+        </form>
+        <form method="post" action="/cars">
+            <input type="submit" value="Discard changes">
+        </form>
