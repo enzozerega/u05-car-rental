@@ -81,4 +81,31 @@
             $statement = $this->connection->prepare($sql);
             $statement->execute();
         }
+
+        public function getAvailableCars() {
+            $sql = "SELECT * FROM cars WHERE checked_in IS NULL OR checked_out IS NOT NULL";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        }
+
+        public function updateCheckOut($registernumber, $personnumber) {
+            date_default_timezone_set("Europe/Stockholm");
+            $dateTime = date("Y-m-d h:m:s");
+            $sql = "UPDATE cars SET checked_out = ? WHERE register_number = $registernumber";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([$dateTime]);
+            $sql2 = "INSERT INTO history (person_number, register_number) VALUES (?, ?)";
+            $statement2 = $this->connection->prepare($sql2);
+            $statement2->execute([$personnumber, $registernumber]);
+        }
+
+        public function getUnavailableCars() {
+            $sql = "SELECT cars.register_number, cars.checked_out, cars.checked_in, cars.price, history.person_number, DATEDIFF(cars.checked_in, cars.checked_out) as days, cars.price*DATEDIFF(cars.checked_in, cars.checked_out) as cost FROM cars JOIN history ON cars.register_number = history.register_number";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        }
     }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Customer edited</title>
+    <title>Car rental - History</title>
 </head>
 
 <body>
@@ -31,6 +31,30 @@
     </header>
     
     <main>
-        <form method="post" action="/customers">
-            <input type="submit" value="Go back to customers">
+        <h1>History</h1>
+        <p>
+        <table>
+        <table>
+            <tr>
+                <th>Register number</th>
+                <th>Person number</th>
+                <th>Check out time</th>
+                <th>Check in time</th>
+                <th>Days</th>
+                <th>Cost</th>
+            </tr>
+          {% for item in historyArray %}
+            <tr>
+                <td>{{item.register_number}}</td>
+                <td>{{item.person_number}}</td>
+                <td>{{item.checked_in}}</td>
+                <td>{{item.checked_out}}</td>
+                <td>{{item.days}}</td>
+                <td>{{item.cost}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        <form method="post" action="/">
+            <input type="submit" value="Home">
         </form>
+    </main>

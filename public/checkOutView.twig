@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Customer edited</title>
+    <title>Car rental - Check out car</title>
 </head>
 
 <body>
@@ -29,8 +29,18 @@
             <input type="submit" value="Home">
         </form>
     </header>
-    
-    <main>
-        <form method="post" action="/customers">
-            <input type="submit" value="Go back to customers">
+        <main>
+        <h1>Check out car</h1>
+        <form method="POST" action="/carCheckedOut{{ car.register_number }}{{ customer.person_number }}">
+            <select name="customers">
+                {% for customer in customerArray %}
+                <option value="{{ customer.person_number }}">{{ customer.name }} /  {{ customer.person_number }} </option>
+                {% endfor %}
+            </select>
+            <select name="cars">
+                {% for car in carArray %}
+                <option value="{{ car.register_number }}">{{ car.make }} /  {{ car.color }} / {{ car.register_number }} </option>
+                {% endfor %}
+            </select>
+            <button type="submit" name="submit">Check out</button>
         </form>

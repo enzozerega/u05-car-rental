@@ -55,6 +55,17 @@
                 $key = substr($path, 11, 21);
                 $controller = new CarsController();
                 return $controller->removeCar($key, $twig);
+            } else if ($path == "/checkOut"){ 
+                $controller = new CheckOutController();
+                return $controller->carAvailables($twig);
+            } else if (strpos($path, "carCheckedOut") && preg_match('#[0-9]#', $path)) {
+                $carKey = substr($path, 14, 20);
+                $customerKey = substr($path, 21, 31);
+                $controller = new CheckOutController();
+                return $controller->checkOutCar($carKey, $customerKey, $twig);
+            } else if ($path == "/history") {
+                $controller = new HistoryController();
+                return $controller->showHistory($twig);
             } else {
                 return "Router Error!";
             }
