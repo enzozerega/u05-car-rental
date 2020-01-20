@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car rental - Edit customer</title>
+</head>
+
+<body>
+    <header>
+        <form method="post" action="/customers">
+            <input type="submit" value="Customers">
+        </form>
+        <form method="post" action="/cars">
+            <input type="submit" value="Cars">
+        </form>
+                <form method="post" action="/checkIn">
+            <input type="submit" value="Check in">
+        </form>
+        <form method="post" action="/CheckOut">
+            <input type="submit" value="Check out">
+        </form>
+                <form method="post" action="/history">
+            <input type="submit" value="History">
+        </form>
+        <form method="post" action="/">
+            <input type="submit" value="Home">
+        </form>
+    </header>
+    
+    <main>
+        <h1>Edit customer</h1>
+        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" >
+            <input type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
+            <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
+            <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
+            <input type="text" name="postalcode" value="{{selectedCustomer.postal_code}}"><br>
+            <input type="text" name="phone" value="{{selectedCustomer.phone}}"><br>
+            <button type="submit" name="submit">Save changes</button>
+        </form>
+        <form method="post" action="/customers">
+            <input type="submit" value="Discard changes">
+        </form>

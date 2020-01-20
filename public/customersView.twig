@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car rental - Customers</title>
+</head>
+
+<body>
+    <header>
+        <form method="post" action="/customers">
+            <input type="submit" value="Customers">
+        </form>
+        <form method="post" action="/cars">
+            <input type="submit" value="Cars">
+        </form>
+                <form method="post" action="/checkIn">
+            <input type="submit" value="Check in">
+        </form>
+        <form method="post" action="/CheckOut">
+            <input type="submit" value="Check out">
+        </form>
+                <form method="post" action="/history">
+            <input type="submit" value="History">
+        </form>
+        <form method="post" action="/">
+            <input type="submit" value="Home">
+        </form>
+    </header>
+    
+    <main>
+        <h1>Customers</h1>
+        <p>
+        <table>
+        <table>
+            <tr>
+                <th>Person number</th>
+                <th>Name</th>
+                <th>Adress</th>
+                <th>Postal Code</th>
+                <th>Phone</th>
+            </tr>
+          {% for customer in customerArray %}
+            <tr>
+                <td>{{customer.person_number}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.adress}}</td>
+                <td>{{customer.postal_code}}</td>
+                <td>{{customer.phone}}</td>
+                <td>
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
+                        <input type="submit" value="Edit Customer">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
+                        <input type="submit" value="Remove Customer">
+                    </form>
+                </td>
+            </tr>
+          {% endfor %}
+        </table>
+        <form method="post" action="/addCustomer">
+            <input type="submit" value="Add Customer">
+        </form>
+    </main>
