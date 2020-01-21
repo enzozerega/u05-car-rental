@@ -41,8 +41,8 @@
                 <th>Color</th>
                 <th>Year</th>
                 <th>Price</th>
-                <th>Checked in by</th>
                 <th>Checked out by</th>
+                <th>Checked in by</th>
             </tr>
           {% for car in carArray %}
             <tr>
@@ -51,8 +51,8 @@
                 <td>{{car.color}}</td>
                 <td>{{car.year}}</td>
                 <td>{{car.price}}</td>
-                <td>{{car.checked_in}}</td>
                 <td>{{car.checked_out}}</td>
+                <td>{{car.checked_in}}</td>
                 <td>
                     <form method="post" action="/editCar{{car.register_number}}">
                         <input type="submit" value="Edit Car">

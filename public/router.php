@@ -58,14 +58,18 @@
             } else if ($path == "/checkOut"){ 
                 $controller = new CheckOutController();
                 return $controller->carAvailables($twig);
-            } else if (strpos($path, "carCheckedOut") && preg_match('#[0-9]#', $path)) {
-                $carKey = substr($path, 14, 20);
-                $customerKey = substr($path, 21, 31);
+            } else if ($path == "/carCheckedOut") {
                 $controller = new CheckOutController();
-                return $controller->checkOutCar($carKey, $customerKey, $twig);
+                return $controller->checkOutCar($request, $twig);
             } else if ($path == "/history") {
                 $controller = new HistoryController();
                 return $controller->showHistory($twig);
+            } else if ($path == "/checkIn") {
+                $controller = new CheckInController();
+                return $controller->activeCustomers($twig);
+            } else if ($path == "/carCheckedIn") {
+                $controller = new CheckInController();
+                return $controller->checkInCar($request, $twig);
             } else {
                 return "Router Error!";
             }

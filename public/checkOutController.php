@@ -12,9 +12,14 @@
             return $twig->render("checkOutView.twig", $map);
         }
 
-        public function checkOutCar($carKey, $customerKey, $twig) {
-            $registernumber = $carKey;
-            $personnumber = $customerKey;
+        public function checkOutCar($request, $twig) {
+            $form = $request->getForm();
+            if(isset($form)) {
+                $personnumber = $_POST['customer'];
+                $registernumber = $_POST['car'];
+            } else {
+                echo "The car was not checked out";
+            }
             $model = new Model();
             $model->updateCheckOut($registernumber, $personnumber);
             echo "Check out complete";

@@ -93,9 +93,9 @@
         public function updateCheckOut($registernumber, $personnumber) {
             date_default_timezone_set("Europe/Stockholm");
             $dateTime = date("Y-m-d h:m:s");
-            $sql = "UPDATE cars SET checked_out = ? WHERE register_number = $registernumber";
+            $sql = "UPDATE cars SET checked_out = ? WHERE register_number = ?";
             $statement = $this->connection->prepare($sql);
-            $statement->execute([$dateTime]);
+            $statement->execute([$dateTime, $registernumber]);
             $sql2 = "INSERT INTO history (person_number, register_number) VALUES (?, ?)";
             $statement2 = $this->connection->prepare($sql2);
             $statement2->execute([$personnumber, $registernumber]);
@@ -108,4 +108,31 @@
             $results = $statement->fetchAll();
             return $results;
         }
+
+        public function getHiredCars() {
+            $sql = "SELECT * FROM cars WHERE checked_in IS NULL AND checked_out IS NOT NULL";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        }
+
+        public function getActiveCustomers() {
+            $sql = "SELECT history.person_number, cars.register_number, cars.make, cars.color FROM cars JOIN history ON cars.register_number = history.register_number WHERE cars.checked_in IS NULL AND cars.checked_out IS NOT NULL";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        }
+
+        public function updateCheckIn($registernumber) {
+            date_default_timezone_set("Europe/Stockholm");
+            $dateTime = date("Y-m-d h:m:s");
+            $sql = "UPDATE cars SET checked_in = ? WHERE register_number = ?";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([$dateTime, $registernumber]);
+            $results = $statement->fetch();
+            return $results;
+        }
+
     }
