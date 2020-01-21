@@ -32,7 +32,7 @@
     
     <main>
         <h1>Edit customer</h1>
-        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" >
+        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="validatePersonnumber()">
             <input type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
             <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
             <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
@@ -43,3 +43,32 @@
         <form method="post" action="/customers">
             <input type="submit" value="Discard changes">
         </form>
+    </main>
+      
+<script> 
+        function validatePersonnumber() {
+            let personnumber = document.forms["form"]["personnumber"].value;
+            if (isNaN(personnumber)) {
+                alert("You can only insert numbers in your personal number field"); }
+            else if (personnumber == "") {
+                alert("You cannot leave your personal number filed empty");
+            } else {
+                let inputYear = personnumber.slice(0,2);
+                let inputMonth = personnumber.slice(2,4);
+                let inputDay = personnumber.slice(4,6);
+                let currentDate = new Date();
+                let minAcceptedYear = currentDate.getFullYear() - 100;
+                let minAcceptedYearSt = minAcceptedYear.toString();
+                let newMillenium = minAcceptedYearSt.slice(2,4);
+                if (inputYear < newMillenium) {
+                    inputYear = "" + 20 + inputYear;
+                } else {
+                    inputYear = "" + 19 + inputYear;
+                }
+                let inputDate = new Date ("'"+inputYear+'-'+inputMonth+'-'+inputDay+"'");
+                if (inputDate == 'Invalid Date') {
+                    alert("The personal number you inserted seems wrong");
+                }
+            }
+        }
+</script> 

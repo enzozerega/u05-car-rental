@@ -52,21 +52,21 @@
                 <td>
                     {% if customer.checkedout == NULL or customer.checkedin != NULL %}
                         <form method="post" action="/editCustomer{{customer.person_number}}">
-                            <input type="submit" value="Edit Customer">
+                            <input type="submit" value="Edit">
                         </form>
                     </td>
                     <td>
                         <form method="post" action="/customerRemoved{{customer.person_number}}">
-                            <input type="submit" value="Remove Customer">
+                            <input type="submit" value="Remove">
                         </form>
                     {% else %}
                         <form method="post" action="/editCustomer{{customer.person_number}}">
-                            <input type="submit" value="Edit Customer" disabled>
+                            <input type="submit" value="Edit" disabled>
                         </form>
                     </td>
                     <td>
                         <form method="post" action="/customerRemoved{{customer.person_number}}">
-                            <input type="submit" value="Remove Customer" disabled>
+                            <input type="submit" value="Remove" disabled>
                         </form>
                     {% endif %}
                 </td>
