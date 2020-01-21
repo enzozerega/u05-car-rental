@@ -11,7 +11,7 @@
         }
 
         public function getAllCustomers() {
-            $sql = "SELECT * FROM customers";
+            $sql = "SELECT customers.person_number 'person_number', customers.name 'name', customers.adress 'adress', customers.postal_code 'postal_code', customers.phone 'phone', cars.checked_in 'checkedin', cars.checked_out 'checkedout' FROM customers LEFT JOIN history ON customers.person_number = history.person_number LEFT JOIN cars ON cars.register_number = history.register_number";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();

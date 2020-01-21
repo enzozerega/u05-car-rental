@@ -50,14 +50,25 @@
                 <td>{{customer.postal_code}}</td>
                 <td>{{customer.phone}}</td>
                 <td>
-                    <form method="post" action="/editCustomer{{customer.person_number}}">
-                        <input type="submit" value="Edit Customer">
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="/customerRemoved{{customer.person_number}}">
-                        <input type="submit" value="Remove Customer">
-                    </form>
+                    {% if customer.checkedout == NULL or customer.checkedin != NULL %}
+                        <form method="post" action="/editCustomer{{customer.person_number}}">
+                            <input type="submit" value="Edit Customer">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="/customerRemoved{{customer.person_number}}">
+                            <input type="submit" value="Remove Customer">
+                        </form>
+                    {% else %}
+                        <form method="post" action="/editCustomer{{customer.person_number}}">
+                            <input type="submit" value="Edit Customer" disabled>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="/customerRemoved{{customer.person_number}}">
+                            <input type="submit" value="Remove Customer" disabled>
+                        </form>
+                    {% endif %}
                 </td>
             </tr>
           {% endfor %}
