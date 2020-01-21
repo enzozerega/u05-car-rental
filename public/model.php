@@ -83,7 +83,7 @@
         }
 
         public function getAvailableCars() {
-            $sql = "SELECT * FROM cars WHERE checked_in IS NULL OR checked_out IS NOT NULL";
+            $sql = "SELECT * FROM cars WHERE checked_out IS NULL";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
