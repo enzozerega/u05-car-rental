@@ -34,8 +34,18 @@
         <h1>Add a car</h1>
         <form method="POST" action="/carAdded" >
             <input type="text" name="registernumber" placeholder="Register number"><br>
-            <input type="text" name="make" placeholder="Make"><br>
-            <input type="text" name="color" placeholder="Color"><br>
+            <select name="make">
+                <option disabled selected>Select make</option>
+                {% for make in makeArray %}
+                <option value="{{ make.make }}">{{ make.make }}</option>
+                {% endfor %}
+            </select>
+            <select name="color">
+                <option disabled selected>Select color</option>
+                {% for color in colorArray %}
+                <option value="{{ color.color }}">{{ color.color }}</option>
+                {% endfor %}
+            </select>
             <input type="text" name="year" placeholder="Year"><br>
             <input type="text" name="price" placeholder="Price"><br>
             <button type="submit" name="submit">Add car</button>

@@ -138,4 +138,20 @@
             $statement->execute();
         }
 
+        public function getAllColors() {
+            $sql = "SELECT color FROM colors";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        }
+
+        public function getAllMakes() {
+            $sql = "SELECT make FROM makes";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        }
+
     }

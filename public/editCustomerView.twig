@@ -32,7 +32,7 @@
     
     <main>
         <h1>Edit customer</h1>
-        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="validatePersonnumber(); validatePhone();">
+        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="validatePhone();">
             <input type="number" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
             <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
             <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
@@ -46,33 +46,6 @@
     </main>
       
 <script> 
-        function validatePersonnumber() {
-            let personnumber = document.forms["form"]["personnumber"].value;
-            if (isNaN(personnumber)) {
-                alert("You can only insert numbers in your personal number field");
-            }
-            else if (personnumber == "") {
-                alert("You cannot leave your personal number filed empty");
-            } else {
-                let inputYear = personnumber.slice(0,2);
-                let inputMonth = personnumber.slice(2,4);
-                let inputDay = personnumber.slice(4,6);
-                let currentDate = new Date();
-                let minAcceptedYear = currentDate.getFullYear() - 100;
-                let minAcceptedYearSt = minAcceptedYear.toString();
-                let newMillenium = minAcceptedYearSt.slice(2,4);
-                if (inputYear < newMillenium) {
-                    inputYear = "" + 20 + inputYear;
-                } else {
-                    inputYear = "" + 19 + inputYear;
-                }
-                let inputDate = new Date ("'"+inputYear+'-'+inputMonth+'-'+inputDay+"'");
-                if (inputDate == 'Invalid Date') {
-                    alert("The personal number you inserted seems wrong");
-                }
-            }
-        }
-
         function validatePhone() {
             let phone = document.forms["form"]["phone"].value;
             if (isNaN(phone)) {

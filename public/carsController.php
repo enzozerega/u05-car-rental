@@ -9,7 +9,12 @@
         }
 
         public function addCar($twig) {
-            return $twig->render("addCarView.twig");
+            $model = new Model();
+            $colorArray = $model->getAllColors();
+            $makeArray = $model->getAllMakes();
+            $map["colorArray"] = $colorArray;
+            $map["makeArray"] = $makeArray;
+            return $twig->render("addCarView.twig", $map);
         }
 
         public function insertCar($request, $twig) {
