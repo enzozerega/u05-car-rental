@@ -1,38 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Cars</title>
-</head>
-
-<body>
-    <header>
-        <form method="post" action="/customers">
-            <input type="submit" value="Customers">
-        </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Cars">
-        </form>
-                <form method="post" action="/checkIn">
-            <input type="submit" value="Check in">
-        </form>
-        <form method="post" action="/checkOut">
-            <input type="submit" value="Check out">
-        </form>
-                <form method="post" action="/history">
-            <input type="submit" value="History">
-        </form>
-        <form method="post" action="/">
-            <input type="submit" value="Home">
-        </form>
-    </header>
+{% include 'MainMenuView.twig' %}
     
     <main>
         <h1>Cars</h1>
         <p>
+        <form method="post" action="/addCar">
+            <button class="add" type="submit">Add car</button>
+        </form>
         <table>
         <table>
             <tr>
@@ -60,28 +33,25 @@
                 <td>
                 {% if car.last_checked_out != NULL and car.checked_in == NULL %}
                     <form method="post" action="/editCar{{car.register_number}}">
-                        <input type="submit" value="Edit" disabled>
+                        <button type="submit" disabled>Edit</button>
                     </form>
                 </td>
                 <td>
                     <form method="post" action="/carRemoved{{car.register_number}}">
-                        <input type="submit" value="Remove" disabled>
+                        <button type="submit" disabled>Remove</button>
                     </form>
                 {% else %}
                     <form method="post" action="/editCar{{car.register_number}}">
-                        <input type="submit" value="Edit">
+                        <button type="submit">Edit</button>
                     </form>
                 </td>
                 <td>
                     <form method="post" action="/carRemoved{{car.register_number}}">
-                        <input type="submit" value="Remove">
+                        <button type="submit">Remove</button>
                     </form>
                 {% endif %}
                 </td>
             </tr>
           {% endfor %}
         </table>
-        <form method="post" action="/addCar">
-            <input type="submit" value="Add Car">
-        </form>
     </main>

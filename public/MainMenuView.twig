@@ -5,27 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Car rental</title>
 </head>
 
 <body>
     <header>
-        <form method="post" action="/customers">
-            <input type="submit" value="Customers">
-        </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Cars">
-        </form>
-                <form method="post" action="/checkIn">
-            <input type="submit" value="Check in">
-        </form>
-        <form method="post" action="/checkOut">
-            <input type="submit" value="Check out">
-        </form>
-                <form method="post" action="/history">
-            <input type="submit" value="History">
-        </form>
-        <form method="post" action="/">
-            <input type="submit" value="Home">
-        </form>
+        <nav id="main-menu">
+            <h1 id="title">CAR RENTAL</h1>
+            <div class="main-menu-list">
+                <form method="post" action="/" class="main-menu-item">
+                    <input type="submit" value="Home">
+                </form>
+                <form method="post" action="/customers" class="main-menu-item">
+                    <input type="submit" value="Customers">
+                </form>
+                <form method="post" action="/cars" class="main-menu-item">
+                    <input type="submit" value="Cars">
+                </form>
+                <form method="post" action="/checkOut" class="main-menu-item">
+                    <input type="submit" value="Check out">
+                </form>
+                <form method="post" action="/checkIn" class="main-menu-item">
+                    <input type="submit" value="Check in">
+                </form>
+                <form method="post" action="/history" class="main-menu-item">
+                    <input type="submit" value="History">
+                </form>
+
+            </div>
+        </nav>
     </header>

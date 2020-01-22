@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Edit car</title>
-</head>
-
-<body>
-    <header>
-        <form method="post" action="/customers">
-            <input type="submit" value="Customers">
-        </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Cars">
-        </form>
-                <form method="post" action="/checkIn">
-            <input type="submit" value="Check in">
-        </form>
-        <form method="post" action="/checkOut">
-            <input type="submit" value="Check out">
-        </form>
-                <form method="post" action="/history">
-            <input type="submit" value="History">
-        </form>
-        <form method="post" action="/">
-            <input type="submit" value="Home">
-        </form>
-    </header>
+{% include 'MainMenuView.twig' %}
     
     <main>
         <h1>Edit car</h1>
-        <form name="form" method="POST" action="/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
+        <form class="edit" name="form" method="POST" action="/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
             <input type="text" name="registernumber" value="{{selectedCar.register_number}}" disabled><br>
             <select name="make">
                 {% for make in makeArray %}
@@ -56,8 +26,8 @@
             <input type="text" name="price" value="{{selectedCar.price}}" maxlength="13"><br>
             <button type="submit" name="submit">Save changes</button>
         </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Discard changes">
+        <form class="edit" method="post" action="/cars">
+            <button type="submit" name="submit">Discard changes</button>
         </form>
     </main>
 <script> 

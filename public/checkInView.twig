@@ -1,37 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include 'MainMenuView.twig' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Check in car</title>
-</head>
-
-<body>
-    <header>
-        <form method="post" action="/customers">
-            <input type="submit" value="Customers">
-        </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Cars">
-        </form>
-                <form method="post" action="/checkIn">
-            <input type="submit" value="Check in">
-        </form>
-        <form method="post" action="/checkOut">
-            <input type="submit" value="Check out">
-        </form>
-                <form method="post" action="/history">
-            <input type="submit" value="History">
-        </form>
-        <form method="post" action="/">
-            <input type="submit" value="Home">
-        </form>
-    </header>
-        <main>
+    <main>
         <h1>Check in car</h1>
-        <form method="POST" action="/carCheckedIn">
+        <form class="edit" method="POST" action="/carCheckedIn">
             <select name="customers">
                 <option disabled selected>Select your car</option>
                 {% for customer in customerArray %}
@@ -40,3 +11,4 @@
             </select>
             <button type="submit" name="submit">Check in</button>
         </form>
+    </main>

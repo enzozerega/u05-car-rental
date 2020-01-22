@@ -1,38 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Customers</title>
-</head>
-
-<body>
-    <header>
-        <form method="post" action="/customers">
-            <input type="submit" value="Customers">
-        </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Cars">
-        </form>
-                <form method="post" action="/checkIn">
-            <input type="submit" value="Check in">
-        </form>
-        <form method="post" action="/checkOut">
-            <input type="submit" value="Check out">
-        </form>
-                <form method="post" action="/history">
-            <input type="submit" value="History">
-        </form>
-        <form method="post" action="/">
-            <input type="submit" value="Home">
-        </form>
-    </header>
+{% include 'MainMenuView.twig' %}
     
     <main>
         <h1>Customers</h1>
         <p>
+        <form method="post" action="/addCustomer">
+            <button class="add" type="submit">Add Customer</button>
+        </form>
         <table>
         <table>
             <tr>
@@ -50,30 +23,27 @@
                 <td>{{customer.postal_code}}</td>
                 <td>{{customer.phone}}</td>
                 <td>
-                    {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
-                        <form method="post" action="/editCustomer{{customer.person_number}}">
-                            <input type="submit" value="Edit">
-                        </form>
+                {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
+                        <button type="submit">Edit</button>
+                    </form>
                 </td>
                 <td>
-                        <form method="post" action="/customerRemoved{{customer.person_number}}">
-                            <input type="submit" value="Remove">
-                        </form>
-                    {% else %}
-                        <form method="post" action="/editCustomer{{customer.person_number}}">
-                            <input type="submit" value="Edit" disabled>
-                        </form>
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
+                        <button type="submit">Remove</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
+                        <button type="submit" disabled>Edit</button>
+                    </form>
                 </td>
                 <td>
-                        <form method="post" action="/customerRemoved{{customer.person_number}}">
-                            <input type="submit" value="Remove" disabled>
-                        </form>
-                    {% endif %}
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
+                        <button type="submit" disabled>Remove</button>
+                    </form>
+                {% endif %}
                 </td>
             </tr>
           {% endfor %}
         </table>
-        <form method="post" action="/addCustomer">
-            <input type="submit" value="Add Customer">
-        </form>
     </main>
