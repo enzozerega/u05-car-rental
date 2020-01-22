@@ -53,7 +53,11 @@
         public function editedCar($key, $twig) {
             $model = new Model();
             $selectedCar = $model->editCar($key);
-            $map = ["selectedCar" => $selectedCar];
+            $colorArray = $model->getAllColors();
+            $makeArray = $model->getAllMakes();
+            $map["colorArray"] = $colorArray;
+            $map["makeArray"] = $makeArray;
+            $map["selectedCar"] = $selectedCar;
             return $twig->render("editCarView.twig", $map);
         }
 

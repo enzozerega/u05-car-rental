@@ -32,8 +32,8 @@
     
     <main>
         <h1>Edit customer</h1>
-        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="validatePhone();">
-            <input type="number" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
+        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
+            <input type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
             <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
             <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
             <input type="text" name="postalcode" value="{{selectedCustomer.postal_code}}"><br>
@@ -46,18 +46,34 @@
     </main>
       
 <script> 
-        function validatePhone() {
+        function validateForm() {
+            let name = document.forms["form"]["name"].value;
+            if (name == "") {
+                alert("You cannot leave your name field empty");
+                return false;
+            }
+            let address = document.forms["form"]["address"].value;
+            if (address == "") {
+                alert("You cannot leave your address field empty");
+                return false;
+            }
+            let postalcode = document.forms["form"]["postalcode"].value;
+            if (postalcode == "") {
+                alert("You cannot leave your postal code field empty");
+                return false;
+            }
             let phone = document.forms["form"]["phone"].value;
             if (isNaN(phone)) {
-                alert("You can only insert numbers in your phone field"); 
+                alert("You can only insert numbers in your phone field");
+                return false;
             } else if (phone == "") {
-                alert("You cannot leave your phone filed empty");
+                alert("You cannot leave your phone field empty");
+                return false;
             } else {
                 if (!phone.startsWith("0")) {
                     alert("The phone you inserted seems wrong");
-                } else {
-                    alert("The phone is correct");
+                    return false;
                 }
             }
         }
-</script> 
+</script>

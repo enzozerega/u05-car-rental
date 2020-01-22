@@ -33,7 +33,7 @@
     <main>
         <h1>Add a customer</h1>
         <form name="form" method="POST" action="/customerAdded" onsubmit="return validateForm();">
-            <input type="text" name="personnumber" placeholder="YYMMDD-XXXX" maxlength="10"><br>
+            <input type="text" name="personnumber" placeholder="YYMMDDXXXX" maxlength="10"><br>
             <input type="text" name="name" placeholder="Name"><br>
             <input type="text" name="address" placeholder="Address"><br>
             <input type="text" name="postalcode" placeholder="Postal code"><br>
@@ -98,9 +98,5 @@
                     return false;
                 }
             }
-        }
-
-        function validatePhone() {
-
         }
 </script> 
