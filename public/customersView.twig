@@ -50,7 +50,7 @@
                 <td>{{customer.postal_code}}</td>
                 <td>{{customer.phone}}</td>
                 <td>
-                    {% if customer.checkedout == NULL or customer.checkedin != NULL %}
+                    {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
                         <form method="post" action="/editCustomer{{customer.person_number}}">
                             <input type="submit" value="Edit">
                         </form>

@@ -11,7 +11,7 @@
         }
 
         public function getAllCustomers() {
-            $sql = "SELECT customers.person_number 'person_number', customers.name 'name', customers.adress 'adress', customers.postal_code 'postal_code', customers.phone 'phone', history.checked_in 'checkedin', history.checked_out 'checkedout' FROM customers LEFT JOIN history ON customers.person_number = history.person_number LEFT JOIN cars ON cars.register_number = history.register_number";
+            $sql = "SELECT customers.person_number, customers.name, customers.adress, customers.postal_code, customers.phone, history.checked_in, history.last_checked_out FROM  customers LEFT JOIN (SELECT  max(person_number) as person_number, max(checked_out) AS last_checked_out, if(min(IFNULL(checked_in, 0)) = 0, NULL, min(checked_in)) as checked_in FROM history GROUP BY person_number) history ON customers.person_number = history.person_number";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
