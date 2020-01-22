@@ -32,8 +32,8 @@
     
     <main>
         <h1>Edit customer</h1>
-        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="validatePersonnumber()">
-            <input type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
+        <form method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="validatePersonnumber(); validatePhone();">
+            <input type="number" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
             <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
             <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
             <input type="text" name="postalcode" value="{{selectedCustomer.postal_code}}"><br>
@@ -49,7 +49,8 @@
         function validatePersonnumber() {
             let personnumber = document.forms["form"]["personnumber"].value;
             if (isNaN(personnumber)) {
-                alert("You can only insert numbers in your personal number field"); }
+                alert("You can only insert numbers in your personal number field");
+            }
             else if (personnumber == "") {
                 alert("You cannot leave your personal number filed empty");
             } else {
@@ -68,6 +69,21 @@
                 let inputDate = new Date ("'"+inputYear+'-'+inputMonth+'-'+inputDay+"'");
                 if (inputDate == 'Invalid Date') {
                     alert("The personal number you inserted seems wrong");
+                }
+            }
+        }
+
+        function validatePhone() {
+            let phone = document.forms["form"]["phone"].value;
+            if (isNaN(phone)) {
+                alert("You can only insert numbers in your phone field"); 
+            } else if (phone == "") {
+                alert("You cannot leave your phone filed empty");
+            } else {
+                if (!phone.startsWith("0")) {
+                    alert("The phone you inserted seems wrong");
+                } else {
+                    alert("The phone is correct");
                 }
             }
         }

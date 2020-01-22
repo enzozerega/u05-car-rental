@@ -39,6 +39,7 @@
         public function removeCustomer($key, $twig) {
             $selectedCustomer = new Model();
             $selectedCustomer->deleteCustomer($key);
+            $selectedCustomer->deleteFromHistory($key);
             echo "Customer removed";
             return $twig->render("customerRemovedView.twig");
         }

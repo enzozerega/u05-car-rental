@@ -42,7 +42,7 @@
                 <th>Year</th>
                 <th>Price</th>
                 <th>Checked out by</th>
-                <th>Checked in by</th>
+                <th>Checked out time</th>
             </tr>
           {% for car in carArray %}
             <tr>
@@ -51,17 +51,32 @@
                 <td>{{car.color}}</td>
                 <td>{{car.year}}</td>
                 <td>{{car.price}}</td>
-                <td>{{car.checked_out}}</td>
-                <td>{{car.checked_in}}</td>
+                {% if car.last_checked_out != NULL and car.checked_in == NULL %}
+                <td>{{car.person_number}}</td>
+                <td>{{car.last_checked_out}}</td>
+                {% else %}
+                <td colspan="2">Free</td>
+                {% endif %}
                 <td>
+                {% if car.last_checked_out != NULL and car.checked_in == NULL %}
                     <form method="post" action="/editCar{{car.register_number}}">
-                        <input type="submit" value="Edit Car">
+                        <input type="submit" value="Edit" disabled>
                     </form>
                 </td>
                 <td>
                     <form method="post" action="/carRemoved{{car.register_number}}">
-                        <input type="submit" value="Remove Car">
+                        <input type="submit" value="Remove" disabled>
                     </form>
+                {% else %}
+                    <form method="post" action="/editCar{{car.register_number}}">
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/carRemoved{{car.register_number}}">
+                        <input type="submit" value="Remove">
+                    </form>
+                {% endif %}
                 </td>
             </tr>
           {% endfor %}

@@ -3,7 +3,7 @@
     class HistoryController {
         public function showHistory($twig) {
             $model = new Model();
-            $historyArray = $model->getUnavailableCars();
+            $historyArray = $model->getHistory();
             $totalCost = null;
             foreach ($historyArray as $cost) {
                 $totalCost = $cost['cost'] + $totalCost;

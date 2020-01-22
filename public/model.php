@@ -11,7 +11,7 @@
         }
 
         public function getAllCustomers() {
-            $sql = "SELECT customers.person_number 'person_number', customers.name 'name', customers.adress 'adress', customers.postal_code 'postal_code', customers.phone 'phone', cars.checked_in 'checkedin', cars.checked_out 'checkedout' FROM customers LEFT JOIN history ON customers.person_number = history.person_number LEFT JOIN cars ON cars.register_number = history.register_number";
+            $sql = "SELECT customers.person_number 'person_number', customers.name 'name', customers.adress 'adress', customers.postal_code 'postal_code', customers.phone 'phone', history.checked_in 'checkedin', history.checked_out 'checkedout' FROM customers LEFT JOIN history ON customers.person_number = history.person_number LEFT JOIN cars ON cars.register_number = history.register_number";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -47,7 +47,7 @@
         }
 
         public function getAllCars() {
-            $sql = "SELECT * FROM cars";
+            $sql = "SELECT cars.register_number, cars.make, cars.color, cars.year, cars.price, history.last_checked_out, history.person_number, history.checked_in FROM cars LEFT JOIN (SELECT  max(person_number) as person_number, register_number, max(checked_out) AS last_checked_out, if(min(IFNULL(checked_in, 0)) = 0, NULL, min(checked_in)) as checked_in FROM history GROUP BY register_number) history ON cars.register_number = history.register_number";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -83,7 +83,7 @@
         }
 
         public function getAvailableCars() {
-            $sql = "SELECT * FROM cars WHERE checked_out IS NULL";
+            $sql = "SELECT cars.register_number, cars.make, cars.color, cars.year, cars.price, history.last_checked_out, history.person_number, history.checked_in FROM cars LEFT JOIN (SELECT  max(person_number) as person_number, register_number, max(checked_out) AS last_checked_out, if(min(IFNULL(checked_in, 0)) = 0, NULL, min(checked_in)) as checked_in FROM history GROUP BY register_number) history ON cars.register_number = history.register_number";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -93,16 +93,13 @@
         public function updateCheckOut($registernumber, $personnumber) {
             date_default_timezone_set("Europe/Stockholm");
             $dateTime = date("Y-m-d h:m:s");
-            $sql = "UPDATE cars SET checked_out = ? WHERE register_number = ?";
+            $sql = "INSERT INTO history (person_number, register_number, checked_out) VALUES (?, ?, ?)";
             $statement = $this->connection->prepare($sql);
-            $statement->execute([$dateTime, $registernumber]);
-            $sql2 = "INSERT INTO history (person_number, register_number) VALUES (?, ?)";
-            $statement2 = $this->connection->prepare($sql2);
-            $statement2->execute([$personnumber, $registernumber]);
+            $statement->execute([$personnumber, $registernumber, $dateTime]);
         }
 
-        public function getUnavailableCars() {
-            $sql = "SELECT cars.register_number, cars.checked_out, cars.checked_in, cars.price, history.person_number, DATEDIFF(cars.checked_in, cars.checked_out) as days, cars.price*DATEDIFF(cars.checked_in, cars.checked_out) as cost FROM cars JOIN history ON cars.register_number = history.register_number";
+        public function getHistory() {
+            $sql = "SELECT cars.register_number, history.checked_out, history.checked_in, cars.price, history.person_number, DATEDIFF(history.checked_in, history.checked_out) as days, cars.price*DATEDIFF(history.checked_in, history.checked_out) as cost FROM cars JOIN history ON cars.register_number = history.register_number";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -110,7 +107,7 @@
         }
 
         public function getHiredCars() {
-            $sql = "SELECT * FROM cars WHERE checked_in IS NULL AND checked_out IS NOT NULL";
+            $sql = "SELECT * FROM history WHERE checked_in IS NULL AND checked_out IS NOT NULL";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -118,7 +115,7 @@
         }
 
         public function getActiveCustomers() {
-            $sql = "SELECT history.person_number, cars.register_number, cars.make, cars.color FROM cars JOIN history ON cars.register_number = history.register_number WHERE cars.checked_in IS NULL AND cars.checked_out IS NOT NULL";
+            $sql = "SELECT history.person_number, cars.register_number, cars.make, cars.color FROM cars JOIN history ON cars.register_number = history.register_number WHERE history.checked_in IS NULL AND history.checked_out IS NOT NULL";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -128,11 +125,17 @@
         public function updateCheckIn($registernumber) {
             date_default_timezone_set("Europe/Stockholm");
             $dateTime = date("Y-m-d h:m:s");
-            $sql = "UPDATE cars SET checked_in = ? WHERE register_number = ?";
+            $sql = "UPDATE history SET checked_in = ? WHERE register_number = ? AND checked_in IS NULL";
             $statement = $this->connection->prepare($sql);
             $statement->execute([$dateTime, $registernumber]);
             $results = $statement->fetch();
             return $results;
+        }
+
+        public function deleteFromHistory($key) {
+            $sql = "DELETE FROM history WHERE person_number = '".$key."'";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute();
         }
 
     }
