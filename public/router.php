@@ -8,7 +8,6 @@
 
         public function route($request, $twig) {
             $path = $request->getPath();
-            $form = $request->getForm();
 
             if ($path == "/customers") {
                 $controller = new CustomersController();

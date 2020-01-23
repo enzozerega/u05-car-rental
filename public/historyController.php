@@ -1,5 +1,12 @@
 <?php
     namespace Main;
+    /* Comments:
+
+    ###Functions###
+    showHistory: queries history and calculates costs of rented cars.
+    
+    */
+
     class HistoryController {
         public function showHistory($twig) {
             $model = new Model();

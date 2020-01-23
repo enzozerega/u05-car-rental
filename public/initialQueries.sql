@@ -18,8 +18,6 @@ create table cars (
     price float(10,2) not null
 );
 
-
-
 create table history (
     id int(20) not null primary key AUTO_INCREMENT,
     register_number varchar(10) not null,
@@ -43,3 +41,17 @@ insert into cars (register_number, make, color, year, price) values ('GDH645', '
 insert into cars (register_number, make, color, year, price) values ('KDJ736', 'Hyundai', 'Blue', '2013', '120');
 insert into cars (register_number, make, color, year, price) values ('JUH674', 'Toyota', 'Black', '2014', '300');
 insert into cars (register_number, make, color, year, price) values ('FTE564', 'Chrysler', 'Red', '2015', '200');
+
+create table makes (
+    id int(20) not null primary key AUTO_INCREMENT,
+    make varchar(20) not null
+);
+
+insert into makes (make) values ('Peugeot'), ('Suzuki'), ('Fiat'), ('Honda'), ('Hyundai'), ('Renault'), ('Toyota'), ('Volkswagen'), ('Chrysler');
+
+create table colors (
+    id int(20) not null primary key AUTO_INCREMENT,
+    color varchar(20) not null
+);
+
+insert into colors (color) values ('Blue'), ('Red'), ('Green'), ('Yellow'), ('Black'), ('White'), ('Magenta'), ('Orange'), ('Grey'), ('Brown');

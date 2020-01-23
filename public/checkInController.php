@@ -1,6 +1,12 @@
 <?php
     namespace Main;
-    
+    /* Comments:
+
+    ###Functions###
+    activeCustomers: queries all customers that are currently renting a car.
+    checkInCar: adds current time to checked in column in history database for the selected car.
+
+    */
     class CheckInController {
     
         public function activeCustomers($twig) {
@@ -19,7 +25,6 @@
             }
             $model = new Model();
             $model->updateCheckIn($registernumber);
-            echo "Car successfully checked in";
             return $twig->render("checkedInView.twig");
         }
 

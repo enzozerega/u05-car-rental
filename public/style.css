@@ -26,7 +26,11 @@
   padding: 5vh 1vh;
   font-size: 18px;
 }
-  
+
+p {
+  padding: 5vh;
+}
+
 
 .main-menu-item > input {
   border: none; 
@@ -44,6 +48,24 @@
   width: 20vh;
   opacity: 0.7;
   cursor: pointer;
+}
+
+h2 {
+  font-size: 4vh;
+}
+
+#logo {
+  height: 8vh;
+  position: absolute;
+  top: 8vh;
+  left: 20vh;
+}
+
+@media (max-width: 425px) {
+  #logo {
+    position: unset;
+    display: inline-block;
+  }
 }
 
 h1 {

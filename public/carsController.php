@@ -1,5 +1,18 @@
 <?php
     namespace Main;
+    /* Comments:
+
+    ###Functions###
+
+    showAllCars: queries all cars registered in database.
+    addCar: generates page to select parameters for a new car.
+    insertCar: add a new item to the cars database.
+    updatedCar: edits existing car in database.
+    editCar: generates page to select parameters for editing existing car.
+    removeCar: removes item from cars database.
+    */
+
+
     class CarsController {
         public function showAllCars($twig) {
             $model = new Model();
@@ -27,7 +40,6 @@
                 $year = $_POST['year'];
                 $price = $_POST['price'];
                 $newcar->setCar($registernumber, $make, $color, $year, $price);
-                echo "The car was added to the database";
             } else {
                 echo "No car added";
             }
@@ -43,7 +55,6 @@
                 $year = $_POST['year'];
                 $price = $_POST['price'];
                 $selectedCar->updateCar($make, $color, $year, $price, $key);
-                echo "The car was successfully updated";
             } else {
                 echo "The car coud not be updated";
             }
@@ -64,7 +75,6 @@
         public function removeCar($key, $twig) {
             $selectedCar = new Model();
             $selectedCar->deleteCar($key);
-            echo "Car removed";
             return $twig->render("carRemovedView.twig");
         }
 

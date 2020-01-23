@@ -1,6 +1,12 @@
 <?php
     namespace Main;
-    
+    /* Comments:
+
+    ###Functions###
+    carAvailables: queries all cars and check in history if they are available to rent.
+    checkOutCar: adds current time to checked out column in history database for the selected car.
+
+    */
     class CheckOutController {
     
         public function carAvailables($twig) {
@@ -22,7 +28,6 @@
             }
             $model = new Model();
             $model->updateCheckOut($registernumber, $personnumber);
-            echo "Check out complete";
             return $twig->render("checkedOutView.twig");
         }
     }
