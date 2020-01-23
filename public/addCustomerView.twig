@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car rental - Add a customer</title>
+</head>
+
+<body>
+    <header>
+        <form method="post" action="/customers">
+            <input type="submit" value="Customers">
+        </form>
+        <form method="post" action="/cars">
+            <input type="submit" value="Cars">
+        </form>
+                <form method="post" action="/checkIn">
+            <input type="submit" value="Check in">
+        </form>
+        <form method="post" action="checkOut">
+            <input type="submit" value="Check out">
+        </form>
+                <form method="post" action="/history">
+            <input type="submit" value="History">
+        </form>
+        <form method="post" action="/">
+            <input type="submit" value="Home">
+        </form>
+    </header>
+    
+    <main>
+        <h1>Add a customer</h1>
+        <form name="form" method="POST" action="/customerAdded" onsubmit="return validateForm();">
+            <input type="text" name="personnumber" placeholder="YYMMDDXXXX" maxlength="10"><br>
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="text" name="address" placeholder="Address"><br>
+            <input type="text" name="postalcode" placeholder="Postal code"><br>
+            <input type="text" name="phone" placeholder="Phone number"><br>
+            <button type="submit" name="submit">Add customer</button>
+        </form>
+    </main>
+<script> 
+        function validateForm() {
+            let personnumber = document.forms["form"]["personnumber"].value;
+            if (isNaN(personnumber)) {
+                alert("You can only insert numbers in your personal number field");
+                return false;
+            }
+            else if (personnumber == "") {
+                alert("You cannot leave your personal number filed empty");
+                return false;
+            } else {
+                let inputYear = personnumber.slice(0,2);
+                let inputMonth = personnumber.slice(2,4);
+                let inputDay = personnumber.slice(4,6);
+                let currentDate = new Date();
+                let minAcceptedYear = currentDate.getFullYear() - 100;
+                let minAcceptedYearSt = minAcceptedYear.toString();
+                let newMillenium = minAcceptedYearSt.slice(2,4);
+                if (inputYear < newMillenium) {
+                    inputYear = "" + 20 + inputYear;
+                } else {
+                    inputYear = "" + 19 + inputYear;
+                }
+                let inputDate = new Date (inputYear, inputMonth, inputDay, 00, 00, 00, 000);
+                if (inputDate == 'Invalid Date') {
+                    alert("The personal number you inserted seems wrong");
+                    return false;
+                }
+            }
+            let name = document.forms["form"]["name"].value;
+            if (name == "") {
+                alert("You cannot leave your name field empty");
+                return false;
+            }
+            let address = document.forms["form"]["address"].value;
+            if (address == "") {
+                alert("You cannot leave your address field empty");
+                return false;
+            }
+            let postalcode = document.forms["form"]["postalcode"].value;
+            if (postalcode == "") {
+                alert("You cannot leave your postal code field empty");
+                return false;
+            }
+            let phone = document.forms["form"]["phone"].value;
+            if (isNaN(phone)) {
+                alert("You can only insert numbers in your phone field");
+                return false;
+            } else if (phone == "") {
+                alert("You cannot leave your phone field empty");
+                return false;
+            } else {
+                if (!phone.startsWith("0")) {
+                    alert("The phone you inserted seems wrong");
+                    return false;
+                }
+            }
+        }
+</script> 

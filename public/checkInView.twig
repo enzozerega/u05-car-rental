@@ -1,0 +1,14 @@
+{% include 'MainMenuView.twig' %}
+
+    <main>
+        <h1>Check in car</h1>
+        <form class="edit" method="POST" action="/carCheckedIn">
+            <select name="customers">
+                <option disabled selected>Select your car</option>
+                {% for customer in customerArray %}
+                        <option name="selectedCar" value="{{customer.register_number}}">Customer ID: {{ customer.person_number }} // Car: {{ customer.make }} /  {{ customer.color }} / {{ customer.register_number }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" name="submit">Check in</button>
+        </form>
+    </main>

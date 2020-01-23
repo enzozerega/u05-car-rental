@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Arial Narrow', serif;
+  }
+  
+/* 01 - Header */
+
+#title {
+  width: 90%;
+  height: 90%;
+  padding: 5vh;
+  margin: auto;
+  margin-top: 5vh;
+  text-align: center;
+  vertical-align: middle;
+  background: #eee;
+}
+.main-menu-list {
+  text-align: center;
+}
+
+.main-menu-item {
+  display: inline-block;
+  padding: 5vh 1vh;
+  font-size: 18px;
+}
+
+p {
+  padding: 5vh;
+}
+
+
+.main-menu-item > input {
+  border: none; 
+  background: #eee;
+  height: 10vh;
+  width: 20vh;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.main-menu-item > input:hover {
+  border: none; 
+  background: rgb(199, 199, 199);
+  height: 10vh;
+  width: 20vh;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 4vh;
+}
+
+#logo {
+  height: 8vh;
+  position: absolute;
+  top: 8vh;
+  left: 20vh;
+}
+
+@media (max-width: 425px) {
+  #logo {
+    position: unset;
+    display: inline-block;
+  }
+}
+
+h1 {
+  font-size: 4vh;
+  width: 40%;
+  height: 90%;
+  padding: 2vh;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 5vh;
+  text-align: center;
+  vertical-align: middle;
+  background: #eee;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 5vh;
+}
+
+th, td {
+  font-size: 3vh;
+  padding: 0.5vh 2vh;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.edit {
+  margin: 5vh;
+}
+
+.edit > input, select {
+  width: 60vh;
+}
+
+button {
+  padding: 0 3vh;
+  font-size: 3vh;
+}
+
+.add {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: 2vh;
+  margin-bottom: 0;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 3vh;
+}

@@ -1,0 +1,49 @@
+{% include 'MainMenuView.twig' %}
+    
+    <main>
+        <h1>Customers</h1>
+        <p>
+        <form method="post" action="/addCustomer">
+            <button class="add" type="submit">Add Customer</button>
+        </form>
+        <table>
+        <table>
+            <tr>
+                <th>Person number</th>
+                <th>Name</th>
+                <th>Adress</th>
+                <th>Postal Code</th>
+                <th>Phone</th>
+            </tr>
+          {% for customer in customerArray %}
+            <tr>
+                <td>{{customer.person_number}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.adress}}</td>
+                <td>{{customer.postal_code}}</td>
+                <td>{{customer.phone}}</td>
+                <td>
+                {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
+                        <button type="submit">Remove</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
+                        <button type="submit" disabled>Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
+                        <button type="submit" disabled>Remove</button>
+                    </form>
+                {% endif %}
+                </td>
+            </tr>
+          {% endfor %}
+        </table>
+    </main>
