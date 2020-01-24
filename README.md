@@ -1,6 +1,6 @@
 # Backendutveckling uppgift: Car rental
 
-[Kika på sidan](http://enzo.zerega.chas.academy/u05-car-rental/)
+[Kika på sidan här](http://enzo.zerega.chas.academy/u05-car-rental/)
 
 ![](https://user-images.githubusercontent.com/42303378/73071146-5e92c800-3eb2-11ea-971d-4484e8920135.JPG)
 
