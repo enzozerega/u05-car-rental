@@ -23,14 +23,14 @@
                 return $controller->insertCustomer($request, $twig);
             } else if (strpos($path, "customerEdited") && preg_match('#[0-9]#', $path)) {
                 $controller = new CustomersController();
-                $key = substr($path, 15, 25);
+                $key = substr($path, 30, 40);
                 return $controller->updatedCustomer($request, $key, $twig);
             } else if (strpos($path, "editCustomer") && preg_match('#[0-9]#', $path)) {
-                $key = substr($path, 13, 23);
+                $key = substr($path, 28, 38);
                 $controller = new CustomersController();
                 return $controller->editedCustomer($key, $twig);
             } else if (strpos($path, "customerRemoved") && preg_match('#[0-9]#', $path)) {
-                $key = substr($path, 16, 26);
+                $key = substr($path, 31, 41);
                 $controller = new CustomersController();
                 return $controller->removeCustomer($key, $twig);
             } else if ($path == "/u05-car-rental/cars") {
@@ -44,14 +44,14 @@
                 return $controller->insertCar($request, $twig);
             } else if (strpos($path, "carEdited") && preg_match('#[0-9]#', $path)) {
                 $controller = new CarsController();
-                $key = substr($path, 10, 16);
+                $key = substr($path, 25, 31);
                 return $controller->updatedCar($request, $key, $twig);
             } else if (strpos($path, "editCar") && preg_match('#[0-9]#', $path)) {
-                $key = substr($path, 8, 18);
+                $key = substr($path, 23, 33);
                 $controller = new CarsController();
                 return $controller->editedCar($key, $twig);
             } else if (strpos($path, "carRemoved") && preg_match('#[0-9]#', $path)) {
-                $key = substr($path, 11, 21);
+                $key = substr($path, 26, 36);
                 $controller = new CarsController();
                 return $controller->removeCar($key, $twig);
             } else if ($path == "/u05-car-rental/checkOut"){ 

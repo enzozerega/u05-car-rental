@@ -55,3 +55,8 @@ create table colors (
 );
 
 insert into colors (color) values ('Blue'), ('Red'), ('Green'), ('Yellow'), ('Black'), ('White'), ('Magenta'), ('Orange'), ('Grey'), ('Brown');
+
+insert into history (register_number, person_number, checked_in, checked_out) values ('GDH645', '5702130161', '2020-01-23 01:01:22', '2020-01-15 11:05:27');
+insert into history (register_number, person_number, checked_in, checked_out) values ('FTE564', '8205030789', '2020-01-21 14:00:22', '2020-01-10 13:31:50');
+insert into history (register_number, person_number, checked_in, checked_out) values ('GDH645', '4502148200', '2020-01-13 01:01:22', '2020-01-03 14:15:47');
+insert into history (register_number, person_number, checked_in, checked_out) values ('KDJ736', '8205030789', '2020-01-20 14:05:46', '2020-01-04 13:31:50');
