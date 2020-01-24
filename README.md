@@ -6,15 +6,21 @@ Den här applikationen beskriver ett system föruthyrning av bilar och har skapa
 
 Filstrukturen är den följande:
 1.	app
-  a.	/vendor
-  b.	composer.json
-  c.	views.twig
-  d.	Controllers.php
-  e.	Request.php
-  f.	Router.php
-  g.	Model.php
-  h.	Dbh.php
-  i.	index.php
+    a. /vendor
+    b. composer.json
+    c. views.twig
+    
+    d. Controllers.php
+    
+    e. Request.php
+    
+    f. Router.php
+    
+    g. Model.php
+    
+    h. Dbh.php
+    
+    i. index.php
   
 Databasen inkluderar de följande tabellerna:
 1.	customers
