@@ -1,0 +1,76 @@
+{% include 'MainMenuView.twig' %}
+    
+    <main>
+        <h1>Add a car</h1>
+        <form class="edit" name="form" method="POST" action="/u05-car-rental/carAdded" onsubmit="return validateForm();">
+            <input type="text" name="registernumber" placeholder="Register number" maxlength="6"><br>
+            <select name="make">
+                <option value="" disabled selected>Select make</option>
+                {% for make in makeArray %}
+                <option value="{{ make.make }}">{{ make.make }}</option>
+                {% endfor %}
+            </select><br>
+            <select value="" name="color">
+                <option disabled selected>Select color</option>
+                {% for color in colorArray %}
+                <option value="{{ color.color }}">{{ color.color }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="text" name="year" placeholder="Year" maxlength="4"><br>
+            <input type="text" name="price" placeholder="Price" maxlength="13"><br>
+            <button type="submit" name="submit">Add car</button>
+        </form>
+    </main>
+<script> 
+    function validateForm() {
+        let registerNumber = document.forms["form"]["registernumber"].value;
+        if (registerNumber == "") {
+            alert("You cannot leave your register number field empty");
+            return false;
+        } else {
+            let registerChar = registerNumber.slice(0,3);
+            let registerNum = registerNumber.slice(3,7);
+            if (/^[a-zA-Z]+$/.test(registerChar) == false) {
+                alert("The register number seems wrong");
+                return false;
+            } else if (/^\d+$/.test(registerNum) == false) {
+                alert("The register number seems wrong");
+                return false;
+            }
+            document.forms["form"]["registernumber"].value = registerChar.toUpperCase()+registerNum;
+        }
+        let make = document.forms["form"]["make"].value;
+        if (make == "") {
+            alert("You cannot leave your make field empty");
+            return false;
+        }
+        let color = document.forms["form"]["color"].value;
+        if (color == "") {
+            alert("You cannot leave your color field empty");
+            return false;
+        }
+        let year = document.forms["form"]["year"].value;
+        if (year == "") {
+            alert("You cannot leave your year field empty");
+            return false;
+        } else if (/^\d+$/.test(year) == false) {
+                alert("The year must be a number");
+                return false;
+        } else if ((year >= 1900 && year <= 2019) == false) {
+                alert("The year must be between 1900 and 2019");
+                return false;
+        }
+
+        let price = document.forms["form"]["price"].value;
+        if (price == "") {
+            alert("You cannot leave your price field empty");
+            return false;
+        } else if (price <= 0) {
+            alert("The price must be a positive number");
+            return false;
+        } else if (/^\d+\.\d+$/.test(price) == false) {
+            alert("The price must be a number. Decimal numbers should be written using a dot (.) as decimal separator");
+            return false;
+        }
+    }
+</script>

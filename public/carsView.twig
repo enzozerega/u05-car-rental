@@ -1,0 +1,57 @@
+{% include 'MainMenuView.twig' %}
+    
+    <main>
+        <h1>Cars</h1>
+        <p>
+        <form method="post" action="/u05-car-rental/addCar">
+            <button class="add" type="submit">Add car</button>
+        </form>
+        <table>
+        <table>
+            <tr>
+                <th>Register number</th>
+                <th>Make</th>
+                <th>Color</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Checked out by</th>
+                <th>Checked out time</th>
+            </tr>
+          {% for car in carArray %}
+            <tr>
+                <td>{{car.register_number}}</td>
+                <td>{{car.make}}</td>
+                <td>{{car.color}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.price}}</td>
+                {% if car.last_checked_out != NULL and car.checked_in == NULL %}
+                <td>{{car.person_number}}</td>
+                <td>{{car.last_checked_out}}</td>
+                {% else %}
+                <td colspan="2">Free</td>
+                {% endif %}
+                <td>
+                {% if car.last_checked_out != NULL and car.checked_in == NULL %}
+                    <form method="post" action="/u05-car-rental/editCar{{car.register_number}}">
+                        <button type="submit" disabled>Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/u05-car-rental/carRemoved{{car.register_number}}">
+                        <button type="submit" disabled>Remove</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="/u05-car-rental/editCar{{car.register_number}}">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/u05-car-rental/carRemoved{{car.register_number}}">
+                        <button type="submit">Remove</button>
+                    </form>
+                {% endif %}
+                </td>
+            </tr>
+          {% endfor %}
+        </table>
+    </main>
