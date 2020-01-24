@@ -8,6 +8,7 @@ Den här applikationen beskriver ett system föruthyrning av bilar och har skapa
 
 Filstrukturen är den följande:
 1.	app
+
     a. /vendor
     
     b. composer.json
