@@ -1,5 +1,7 @@
 # Backendutveckling uppgift: Car rental
 
+[Kika på sidan](http://enzo.zerega.chas.academy/u05-car-rental/)
+
 ![](https://user-images.githubusercontent.com/42303378/73071146-5e92c800-3eb2-11ea-971d-4484e8920135.JPG)
 
 Den här applikationen beskriver ett system föruthyrning av bilar och har skapats med hjälp av PHP, JavaScript och Twig. Den är baserad på MVC-modellen och kommunicerar via en router. Alla data har lagrats i en databas på Binero med hjälp av MySQL.
@@ -7,7 +9,9 @@ Den här applikationen beskriver ett system föruthyrning av bilar och har skapa
 Filstrukturen är den följande:
 1.	app
     a. /vendor
+    
     b. composer.json
+    
     c. views.twig
     
     d. Controllers.php
