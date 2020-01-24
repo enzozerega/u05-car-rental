@@ -6,6 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Main\\CarsController' => $baseDir . '/CarsController.php',
+    'Main\\CheckInController' => $baseDir . '/CheckInController.php',
+    'Main\\CheckOutController' => $baseDir . '/CheckOutController.php',
+    'Main\\CustomersController' => $baseDir . '/CustomersController.php',
+    'Main\\Dbh' => $baseDir . '/Dbh.php',
+    'Main\\HistoryController' => $baseDir . '/HistoryController.php',
+    'Main\\ListController' => $baseDir . '/ListController.php',
+    'Main\\MainController' => $baseDir . '/MainController.php',
+    'Main\\Model' => $baseDir . '/Model.php',
+    'Main\\Request' => $baseDir . '/Request.php',
+    'Main\\Router' => $baseDir . '/Router.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Twig\\Cache\\CacheInterface' => $vendorDir . '/twig/twig/src/Cache/CacheInterface.php',

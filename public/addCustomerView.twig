@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include 'MainMenuView.twig' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car rental - Add a customer</title>
-</head>
-
-<body>
-    <header>
-        <form method="post" action="/customers">
-            <input type="submit" value="Customers">
-        </form>
-        <form method="post" action="/cars">
-            <input type="submit" value="Cars">
-        </form>
-                <form method="post" action="/checkIn">
-            <input type="submit" value="Check in">
-        </form>
-        <form method="post" action="checkOut">
-            <input type="submit" value="Check out">
-        </form>
-                <form method="post" action="/history">
-            <input type="submit" value="History">
-        </form>
-        <form method="post" action="/">
-            <input type="submit" value="Home">
-        </form>
-    </header>
-    
     <main>
         <h1>Add a customer</h1>
-        <form name="form" method="POST" action="/customerAdded" onsubmit="return validateForm();">
+        <form name="form" method="POST" action="/u05-car-rental/customerAdded" onsubmit="return validateForm();">
             <input type="text" name="personnumber" placeholder="YYMMDDXXXX" maxlength="10"><br>
             <input type="text" name="name" placeholder="Name"><br>
             <input type="text" name="address" placeholder="Address"><br>
