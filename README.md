@@ -34,7 +34,7 @@ Databasen inkluderar de följande tabellerna:
 4.	makes
 5.	colors
 
-Filen *index.php* anropar *route()* funktionen från *Router* klassen. Denna funktion, beroende på variabeln *_SERVER[”REQUEST_URI”]* värde, omredigera användaren till den mest lämpliga sidan. På detta sätt, när användaren besöker enzo.zerega.chas.academy/u05-car-rental är redigerad till *home* sidan. Filen composer.json inkluderar den kod för att *autolader* kan fungera och anropningen av varje klass blir enklare.
+Filen *index.php* anropar *route()* funktionen från *Router* klassen. Denna funktion, beroende på variabeln *_SERVER[”REQUEST_URI”]* värde, omredigera användaren till den mest lämpliga sidan. På detta sätt, när användaren besöker [enzo.zerega.chas.academy/u05-car-rental](http://enzo.zerega.chas.academy/u05-car-rental/) är redigerad till *home* sidan. Filen composer.json inkluderar den kod för att *autolader* kan fungera och anropningen av varje klass blir enklare.
 
 Varje sidas *view* har varit skapad med hjälp av Twig så att det blir tydligare att skriva och läsa html koden, med hänsyn till för att få data från databasen det behövs en inte så tydlig php kod. Twig gör alt lättare. På *Customers* sida, kan man se alla personer som finns i databasen. Man kan redigera en person, radera den eller lägga till en ny person i databasen. *Cars* sidan visar alla bilar som finns i databasen. Här kan man också redigera, radera eller lägga till en ny bil i databasen. *Check out* sidan tillåter att hyra en bil och lägga till den aktuell tid i *history* tabellen i databasen.  *Check in* sidan tillåter att checka-in en bil och lägga till den i *history* tabellen i databasen. *History* visar historiken av alla uthyrda bilar och räckningen av totalkostnaden.
 
