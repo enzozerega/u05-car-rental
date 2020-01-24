@@ -3,6 +3,7 @@
     padding: 0px;
     margin: 0px;
     font-family: 'Arial Narrow', serif;
+    font-size: 24px;
   }
   
 /* 01 - Header */
@@ -16,6 +17,7 @@
   text-align: center;
   vertical-align: middle;
   background: #eee;
+  font-size: 36px;
 }
 .main-menu-list {
   text-align: center;
@@ -24,15 +26,9 @@
 .main-menu-item {
   display: inline-block;
   padding: 5vh 1vh;
-  font-size: 18px;
 }
 
-p {
-  padding: 5vh;
-}
-
-
-.main-menu-item > input {
+#main-menu >.main-menu-list > .main-menu-item > input {
   border: none; 
   background: #eee;
   height: 10vh;
@@ -50,10 +46,6 @@ p {
   cursor: pointer;
 }
 
-h2 {
-  font-size: 4vh;
-}
-
 #logo {
   height: 8vh;
   position: absolute;
@@ -61,7 +53,7 @@ h2 {
   left: 20vh;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 1000px) {
   #logo {
     position: unset;
     display: inline-block;
@@ -81,6 +73,10 @@ h1 {
   background: #eee;
 }
 
+h2 {
+  font-size: 48px;
+}
+
 table {
   border-collapse: collapse;
   margin: auto;
@@ -89,7 +85,7 @@ table {
 }
 
 th, td {
-  font-size: 3vh;
+  font-size: 18px;
   padding: 0.5vh 2vh;
   text-align: left;
 }
@@ -108,7 +104,6 @@ tr:nth-child(even) {
 
 button {
   padding: 0 3vh;
-  font-size: 3vh;
 }
 
 .add {
@@ -119,5 +114,4 @@ button {
   margin-bottom: 0;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  font-size: 3vh;
 }

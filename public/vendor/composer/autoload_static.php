@@ -47,6 +47,17 @@ class ComposerStaticInit4f8b7ab03d04b7e08a13a97f994167b9
     );
 
     public static $classMap = array (
+        'Main\\CarsController' => __DIR__ . '/../..' . '/CarsController.php',
+        'Main\\CheckInController' => __DIR__ . '/../..' . '/CheckInController.php',
+        'Main\\CheckOutController' => __DIR__ . '/../..' . '/CheckOutController.php',
+        'Main\\CustomersController' => __DIR__ . '/../..' . '/CustomersController.php',
+        'Main\\Dbh' => __DIR__ . '/../..' . '/Dbh.php',
+        'Main\\HistoryController' => __DIR__ . '/../..' . '/HistoryController.php',
+        'Main\\ListController' => __DIR__ . '/../..' . '/ListController.php',
+        'Main\\MainController' => __DIR__ . '/../..' . '/MainController.php',
+        'Main\\Model' => __DIR__ . '/../..' . '/Model.php',
+        'Main\\Request' => __DIR__ . '/../..' . '/Request.php',
+        'Main\\Router' => __DIR__ . '/../..' . '/Router.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
