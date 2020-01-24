@@ -68,7 +68,7 @@
         } else if (price <= 0) {
             alert("The price must be a positive number");
             return false;
-        } else if (/^\d+\.\d+$/.test(price) == false) {
+        } else if (isNaN(price)) {
             alert("The price must be a number. Decimal numbers should be written using a dot (.) as decimal separator");
             return false;
         }
