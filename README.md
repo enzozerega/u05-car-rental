@@ -35,8 +35,9 @@ Varje sidas *view* har varit skapad med hjälp av Twig så att det blir tydligar
 
 När en sida hämtar data från databasen, routern anropas metoderna från modellen. Till exempel, för att hämta alla personer som finns i tabellen *customers* i databasen, vid sidan laddning anropas routern metoden *getAllCustomers()* som har en *query* som tar alla personen i tabellen. Denna information sparats i en *Array* som kan sen användas i en *view* och kan visas på en sida.  Model.php är den endast filen som kan ansluta till databasen.
 
-Här är de *queries* använts för att skapa alla tabeller i databasen: 
+Här är de *queries* använts för att skapa alla tabeller i databasen:
 
+```
 CREATE TABLE customers (
     person_number varchar(20) NOT NULL PRIMARY KEY,
     name varchar(256) NOT NULL,
@@ -72,5 +73,4 @@ CREATE TABLE colors (
     id int(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     color varchar(20) NOT NULL
 );
-
-
+```
