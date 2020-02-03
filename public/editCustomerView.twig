@@ -2,7 +2,7 @@
     
     <main>
         <h1>Edit customer</h1>
-        <form class="edit" method="POST" action="/u05-car-rental/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
+        <form class="edit" method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
             <input type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
             <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
             <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
@@ -10,7 +10,7 @@
             <input type="text" name="phone" value="{{selectedCustomer.phone}}"><br>
             <button type="submit" name="submit">Save changes</button>
         </form>
-        <form class="edit" method="post" action="/u05-car-rental/customers">
+        <form class="edit" method="post" action="/customers">
             <button type="submit" name="submit">Discard changes</button>
         </form>
     </main>

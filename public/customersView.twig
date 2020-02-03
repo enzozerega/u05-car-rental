@@ -3,7 +3,7 @@
     <main>
         <h1>Customers</h1>
         <p>
-        <form method="post" action="/u05-car-rental/addCustomer">
+        <form method="post" action="/addCustomer">
             <button class="add" type="submit">Add Customer</button>
         </form>
         <table>
@@ -24,21 +24,21 @@
                 <td>{{customer.phone}}</td>
                 <td>
                 {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
-                    <form method="post" action="/u05-car-rental/editCustomer{{customer.person_number}}">
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
                         <button type="submit">Edit</button>
                     </form>
                 </td>
                 <td>
-                    <form method="post" action="/u05-car-rental/customerRemoved{{customer.person_number}}">
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
                         <button type="submit">Remove</button>
                     </form>
                 {% else %}
-                    <form method="post" action="/u05-car-rental/editCustomer{{customer.person_number}}">
+                    <form method="post" action="/editCustomer{{customer.person_number}}">
                         <button type="submit" disabled>Edit</button>
                     </form>
                 </td>
                 <td>
-                    <form method="post" action="/u05-car-rental/customerRemoved{{customer.person_number}}">
+                    <form method="post" action="/customerRemoved{{customer.person_number}}">
                         <button type="submit" disabled>Remove</button>
                     </form>
                 {% endif %}

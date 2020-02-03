@@ -4,10 +4,10 @@
     use PDO;
     
     class Dbh {
-        private $host = "my55b.sqlserver.se";
-        private $user = "244091_sl32760";
-        private $password = "Enze22ega";
-        private $dbName = "244091-rentacar";
+        private $host = "localhost";
+        private $user = "root";
+        private $password = "secret";
+        private $dbName = "rentacar";
 
         public function connect() {
             $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;

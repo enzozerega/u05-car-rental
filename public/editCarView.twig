@@ -2,7 +2,7 @@
     
     <main>
         <h1>Edit car</h1>
-        <form class="edit" name="form" method="POST" action="/u05-car-rental/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
+        <form class="edit" name="form" method="POST" action="/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
             <input type="text" name="registernumber" value="{{selectedCar.register_number}}" disabled><br>
             <select name="make">
                 {% for make in makeArray %}
@@ -26,7 +26,7 @@
             <input type="text" name="price" value="{{selectedCar.price}}" maxlength="13"><br>
             <button type="submit" name="submit">Save changes</button>
         </form>
-        <form class="edit" method="post" action="/u05-car-rental/cars">
+        <form class="edit" method="post" action="/cars">
             <button type="submit" name="submit">Discard changes</button>
         </form>
     </main>

@@ -5,6 +5,8 @@
 
         public function __construct() {
             $this->path = $_SERVER["REQUEST_URI"];
+            $this->pathCount = strlen($this->path);
+            $this->path = substr($this->path, 0, $this->pathCount);
             $this->form = $_POST;
         }
 
