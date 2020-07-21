@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="cta center">
-            <a class="btn btn-blue" href="/addCustomer">Add Customer</a>
+            <a class="btn btn-blue" href="/u05-car-rental/addCustomer">Add Customer</a>
         </div>
         <table>
             <tr>
@@ -28,10 +28,10 @@
                 <td>{{customer.phone}}</td>
                 {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
                 <td>
-                    <a class="table-btn" href="/editCustomer{{customer.person_number}}"><i class="icon ion-md-create"></i></a>
+                    <a class="table-btn" href="/u05-car-rental/editCustomer{{customer.person_number}}"><i class="icon ion-md-create"></i></a>
                 </td>
                 <td>
-                    <a class="table-btn" href="/customerRemoved{{customer.person_number}}"><i class="icon ion-md-trash"></i></a>
+                    <a class="table-btn" href="/u05-car-rental/customerRemoved{{customer.person_number}}"><i class="icon ion-md-trash"></i></a>
                 </td>
                 {% else %}
                 <td colspan="2">

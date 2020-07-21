@@ -5,7 +5,7 @@
             <div class="title-heading">
                 <h1>Edit car</h1>
             </div>
-        <form class="form-md" name="form" method="POST" action="/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
+        <form class="form-md" name="form" method="POST" action="/u05-car-rental/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
             <div class="form-group">
                 <span class="label-disabled">Register Number</span>
                 <input class="form-field" type="text" name="registernumber" value="{{selectedCar.register_number}}" disabled>
@@ -47,7 +47,7 @@
             </div>
         </form>
         <div class="cta center">
-            <a class="btn btn-alert" href="/cars">Discard changes</a>
+            <a class="btn btn-alert" href="/u05-car-rental/cars">Discard changes</a>
         </div>  
     </section>
 <script> 

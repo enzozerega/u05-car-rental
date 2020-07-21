@@ -7,9 +7,7 @@
     class Router {
 
         public function route($request, $twig) {
-            $fullpath = $request->getPath(); // Change to $path in production
-            $subpath = "/u05-car-rental"; // Comment in production
-            $path = $subpath . $fullpath; // Comment in production
+            $path = $request->getPath();
 
             if ($path == "/u05-car-rental/customers") {
                 $controller = new CustomersController();
