@@ -1,9 +1,11 @@
 {% include 'MainMenuView.twig' %}
     
-    <main>
-        <h1>History</h1>
-        <p>
-        <table>
+    <section class="content">
+        <div class="container">
+            <div class="title-heading">
+                <h1>History</h1>
+            </div>
+        </div>
         <table>
             <tr>
                 <th>Register number</th>
@@ -31,4 +33,13 @@
                 <td>{{totalCost}}</td>
             </tr>
         </table>
-    </main>
+    </section>
+    <script>
+        // Add current class to nav-link
+        for (let elem of document.querySelectorAll(".nav-link")) {
+            if (elem.textContent === "History") {
+                elem.classList.add("current");
+            }
+        }
+    </script>
+{% include 'footerView.twig' %}

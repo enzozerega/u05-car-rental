@@ -6,7 +6,7 @@
     class Dbh {
         private $host = "localhost";
         private $user = "root";
-        private $password = "secret";
+        private $password = "root";
         private $dbName = "rentacar";
 
         public function connect() {

@@ -1,35 +1,55 @@
 {% include 'MainMenuView.twig' %}
     
-    <main>
-        <h1>Edit car</h1>
-        <form class="edit" name="form" method="POST" action="/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
-            <input type="text" name="registernumber" value="{{selectedCar.register_number}}" disabled><br>
-            <select name="make">
-                {% for make in makeArray %}
-                    {% if make.make == selectedCar.make %}
-                <option value="{{ make.make }}" selected>{{ make.make }}</option>
-                    {% else %}
-                <option value="{{ make.make }}">{{ make.make }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select><br>
-            <select value="" name="color">
-                {% for color in colorArray %}
-                    {% if color.color == selectedCar.color %}
-                <option value="{{ color.color }}" selected>{{ color.color }}</option>
-                    {% else %}
-                <option value="{{ color.color }}">{{ color.color }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select><br>
-            <input type="text" name="year" value="{{selectedCar.year}}" maxlength="4"><br>
-            <input type="text" name="price" value="{{selectedCar.price}}" maxlength="13"><br>
-            <button type="submit" name="submit">Save changes</button>
+    <section class="content">
+        <div class="container">
+            <div class="title-heading">
+                <h1>Edit car</h1>
+            </div>
+        <form class="form-md" name="form" method="POST" action="/carEdited{{selectedCar.register_number}}" onsubmit="return validateForm();">
+            <div class="form-group">
+                <span class="label-disabled">Register Number</span>
+                <input class="form-field" type="text" name="registernumber" value="{{selectedCar.register_number}}" disabled>
+            </div>
+            <div class="form-group">
+                <span>Make</span>
+                <select class="form-field" name="make">
+                    {% for make in makeArray %}
+                        {% if make.make == selectedCar.make %}
+                    <option value="{{ make.make }}" selected>{{ make.make }}</option>
+                        {% else %}
+                    <option value="{{ make.make }}">{{ make.make }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Color</span>
+                <select class="form-field" class="form-field" value="" name="color">
+                    {% for color in colorArray %}
+                        {% if color.color == selectedCar.color %}
+                    <option value="{{ color.color }}" selected>{{ color.color }}</option>
+                        {% else %}
+                    <option value="{{ color.color }}">{{ color.color }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                    <span>Year</span>
+                    <input class="form-field" type="text" name="year" value="{{selectedCar.year}}" maxlength="4">
+            </div>
+            <div class="form-group">
+                    <span>Price (per day)</span>
+                    <input class="form-field" type="text" name="price" value="{{selectedCar.price}}" maxlength="13">
+            </div>
+            <div class="cta center">
+                <button class="btn btn-blue" type="submit" name="submit">Save changes</button>
+            </div>
         </form>
-        <form class="edit" method="post" action="/cars">
-            <button type="submit" name="submit">Discard changes</button>
-        </form>
-    </main>
+        <div class="cta center">
+            <a class="btn btn-alert" href="/cars">Discard changes</a>
+        </div>  
+    </section>
 <script> 
     function validateForm() {
         let make = document.forms["form"]["make"].value;
@@ -66,4 +86,11 @@
             return false;
         }
     }
+    // Add current class to nav-link
+        for (let elem of document.querySelectorAll(".nav-link")) {
+            if (elem.textContent === "Cars") {
+                elem.classList.add("current");
+            }
+        }
 </script>
+{% include 'footerView.twig' %}
