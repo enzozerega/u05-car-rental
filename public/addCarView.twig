@@ -1,26 +1,47 @@
 {% include 'MainMenuView.twig' %}
     
-    <main>
-        <h1>Add a car</h1>
-        <form class="edit" name="form" method="POST" action="/carAdded" onsubmit="return validateForm();">
-            <input type="text" name="registernumber" placeholder="Register number" maxlength="6"><br>
-            <select name="make">
-                <option value="" disabled selected>Select make</option>
-                {% for make in makeArray %}
-                <option value="{{ make.make }}">{{ make.make }}</option>
-                {% endfor %}
-            </select><br>
-            <select value="" name="color">
-                <option disabled selected>Select color</option>
-                {% for color in colorArray %}
-                <option value="{{ color.color }}">{{ color.color }}</option>
-                {% endfor %}
-            </select><br>
-            <input type="text" name="year" placeholder="Year" maxlength="4"><br>
-            <input type="text" name="price" placeholder="Price" maxlength="13"><br>
-            <button type="submit" name="submit">Add car</button>
+    <section class="content">
+        <div class="container">
+            <div class="title-heading">
+                <h1>Add a car</h1>
+            </div>
+        <form class="form-md" name="form" method="POST" action="/carAdded" onsubmit="return validateForm();">
+            <div class="form-group">
+                    <span>Register Number</span>
+                    <input class="form-field" type="text" name="registernumber" placeholder="Register number" maxlength="6">
+            </div>
+            
+            <div class="form-group">
+                <span>Make</span>
+                <select class="form-field" name="make">
+                    <option value="" disabled selected>Select make</option>
+                    {% for make in makeArray %}
+                    <option value="{{ make.make }}">{{ make.make }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Color</span>
+                <select class="form-field" value="" name="color">
+                    <option disabled selected>Select color</option>
+                    {% for color in colorArray %}
+                    <option value="{{ color.color }}">{{ color.color }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Year</span>
+                <input class="form-field" type="text" name="year" placeholder="Year" maxlength="4">
+            </div>
+            <div class="form-group">
+                <span>Price per day</span>
+                <input class="form-field" type="text" name="price" placeholder="Price" maxlength="13">
+            </div>
+            <div class="cta center">
+                <button class="btn btn-blue" type="submit" name="submit">Add car</button>
+            </div>            
         </form>
-    </main>
+    </section>
 <script> 
     function validateForm() {
         let registerNumber = document.forms["form"]["registernumber"].value;
@@ -73,4 +94,12 @@
             return false;
         }
     }
+        // Add current class to nav-link
+        for (let elem of document.querySelectorAll(".nav-link")) {
+            if (elem.textContent === "Cars") {
+                elem.classList.add("current");
+            }
+        }
+    
 </script>
+{% include 'footerView.twig' %}

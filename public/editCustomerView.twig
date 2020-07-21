@@ -1,19 +1,41 @@
 {% include 'MainMenuView.twig' %}
     
-    <main>
-        <h1>Edit customer</h1>
-        <form class="edit" method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
-            <input type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled><br>
-            <input type="text" name="name" value="{{selectedCustomer.name}}"><br>
-            <input type="text" name="address" value="{{selectedCustomer.adress}}"><br>
-            <input type="text" name="postalcode" value="{{selectedCustomer.postal_code}}"><br>
-            <input type="text" name="phone" value="{{selectedCustomer.phone}}"><br>
-            <button type="submit" name="submit">Save changes</button>
-        </form>
-        <form class="edit" method="post" action="/customers">
-            <button type="submit" name="submit">Discard changes</button>
-        </form>
-    </main>
+    <section class="content">
+        <div class="container">
+            <div class="title-heading">
+                <h1>Edit customer</h1>
+            </div>
+            <form class="form-md" method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
+                <div class="form-group">
+                    <span class="label-disabled">Personal Number</span>
+                    <input class="form-field" type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled>
+                </div>
+                <div class="form-group">
+                    <span>Name</span>
+                    <input class="form-field" type="text" name="name" value="{{selectedCustomer.name}}">
+                </div>
+                <div class="form-group">
+                    <span>Address</span>
+                    <input class="form-field" type="text" name="address" value="{{selectedCustomer.adress}}">
+                </div>
+                <div class="form-group">
+                    <span>Postal Code</span>
+                    <input class="form-field" type="text" name="postalcode" value="{{selectedCustomer.postal_code}}">
+                </div>
+                <div class="form-group">
+                    <span>Phone</span>
+                    <input class="form-field" type="text" name="phone" value="{{selectedCustomer.phone}}">
+                </div>
+                <div class="cta center">
+                    <button class="btn btn-blue" type="submit" name="submit">Save changes</button>
+                </div>
+            </form>
+            <div class="cta center">
+                <a class="btn btn-alert" href="/customers">Discard changes</a>
+            </div>  
+        </div>
+
+    </section>
       
 <script> 
         function validateForm() {
@@ -46,4 +68,11 @@
                 }
             }
         }
+        // Add current class to nav-link
+        for (let elem of document.querySelectorAll(".nav-link")) {
+            if (elem.textContent === "Customers") {
+                elem.classList.add("current");
+            }
+        }
 </script>
+{% include 'footerView.twig' %}

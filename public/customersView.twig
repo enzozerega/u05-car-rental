@@ -1,12 +1,14 @@
 {% include 'MainMenuView.twig' %}
     
-    <main>
-        <h1>Customers</h1>
-        <p>
-        <form method="post" action="/addCustomer">
-            <button class="add" type="submit">Add Customer</button>
-        </form>
-        <table>
+    <section class="content">
+        <div class="container">
+            <div class="title-heading">
+                <h1>Customers</h1>
+            </div>
+        </div>
+        <div class="cta center">
+            <a class="btn btn-blue" href="/addCustomer">Add Customer</a>
+        </div>
         <table>
             <tr>
                 <th>Person number</th>
@@ -14,6 +16,8 @@
                 <th>Adress</th>
                 <th>Postal Code</th>
                 <th>Phone</th>
+                <th></th>
+                <th></th>
             </tr>
           {% for customer in customerArray %}
             <tr>
@@ -22,28 +26,28 @@
                 <td>{{customer.adress}}</td>
                 <td>{{customer.postal_code}}</td>
                 <td>{{customer.phone}}</td>
-                <td>
                 {% if customer.last_checked_out == NULL or customer.checked_in != NULL %}
-                    <form method="post" action="/editCustomer{{customer.person_number}}">
-                        <button type="submit">Edit</button>
-                    </form>
+                <td>
+                    <a class="table-btn" href="/editCustomer{{customer.person_number}}"><i class="icon ion-md-create"></i></a>
                 </td>
                 <td>
-                    <form method="post" action="/customerRemoved{{customer.person_number}}">
-                        <button type="submit">Remove</button>
-                    </form>
+                    <a class="table-btn" href="/customerRemoved{{customer.person_number}}"><i class="icon ion-md-trash"></i></a>
+                </td>
                 {% else %}
-                    <form method="post" action="/editCustomer{{customer.person_number}}">
-                        <button type="submit" disabled>Edit</button>
-                    </form>
+                <td colspan="2">
+                    <a class="table-btn"><i class="icon ion-md-alert" title="Active customer. Cannot be edited or removed."></i></a>
                 </td>
-                <td>
-                    <form method="post" action="/customerRemoved{{customer.person_number}}">
-                        <button type="submit" disabled>Remove</button>
-                    </form>
                 {% endif %}
-                </td>
             </tr>
           {% endfor %}
         </table>
-    </main>
+    </section>
+    <script>
+        // Add current class to nav-link
+        for (let elem of document.querySelectorAll(".nav-link")) {
+            if (elem.textContent === "Customers") {
+                elem.classList.add("current");
+            }
+        }
+    </script>
+{% include 'footerView.twig' %}

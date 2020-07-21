@@ -1,87 +1,109 @@
-# Backendutveckling uppgift: Car rental
+# Car rental register system
 
-[Kika på sidan här](http://enzo.zerega.chas.academy/u05-car-rental/)
+This app was created as part of my training as a web developer at Chas Academy. It simulates a system for checking in and checking out cars of a car rental company. The user can add customers, cars and register check in and check out times. It was developed using PHP, MySQL, Twig, JavaScript and CSS. A custom MVC framework was created for building the app.
 
-![](https://user-images.githubusercontent.com/42303378/73071146-5e92c800-3eb2-11ea-971d-4484e8920135.JPG)
+The app:
 
-Den här applikationen beskriver ett system föruthyrning av bilar och har skapats med hjälp av PHP, JavaScript och Twig. Den är baserad på MVC-modellen och kommunicerar via en router. Alla data har lagrats i en databas på Binero med hjälp av MySQL.
+- has a site that is responsive and adaptive.
 
-Filstrukturen är den följande:
-1.	app
+- contains all aspects of a Fullstack development process.
 
-    a. /vendor
-    
-    b. composer.json
-    
-    c. views.twig
-    
-    d. Controllers.php
-    
-    e. Request.php
-    
-    f. Router.php
-    
-    g. Model.php
-    
-    h. Dbh.php
-    
-    i. index.php
-  
-Databasen inkluderar de följande tabellerna:
-1.	customers
-2.	cars
-3.	history
-4.	makes
-5.	colors
+- queries data from a relational database.
 
-Filen *index.php* anropar *route()* funktionen från *Router* klassen. Denna funktion, beroende på variabeln *_SERVER[”REQUEST_URI”]* värde, omredigera användaren till den mest lämpliga sidan. På detta sätt, när användaren besöker [enzo.zerega.chas.academy/u05-car-rental](http://enzo.zerega.chas.academy/u05-car-rental/) är redigerad till *home* sidan. Filen composer.json inkluderar den kod för att *autolader* kan fungera och anropningen av varje klass blir enklare.
+### Screenshots
 
-Varje sidas *view* har varit skapad med hjälp av Twig så att det blir tydligare att skriva och läsa html koden, med hänsyn till för att få data från databasen det behövs en inte så tydlig php kod. Twig gör alt lättare. På *Customers* sida, kan man se alla personer som finns i databasen. Man kan redigera en person, radera den eller lägga till en ny person i databasen. *Cars* sidan visar alla bilar som finns i databasen. Här kan man också redigera, radera eller lägga till en ny bil i databasen. *Check out* sidan tillåter att hyra en bil och lägga till den aktuell tid i *history* tabellen i databasen.  *Check in* sidan tillåter att checka-in en bil och lägga till den i *history* tabellen i databasen. *History* visar historiken av alla uthyrda bilar och räckningen av totalkostnaden.
+![screenshot](./public/screenshot.png)
 
-![](https://user-images.githubusercontent.com/42303378/73076970-876d8a00-3ebf-11ea-9bce-d4833f4b4b8a.JPG)
-![](https://user-images.githubusercontent.com/42303378/73076984-89cfe400-3ebf-11ea-80e8-0275419bc8be.JPG)
-![](https://user-images.githubusercontent.com/42303378/73076989-8b99a780-3ebf-11ea-8ac2-45424f6d41a1.JPG)
-![](https://user-images.githubusercontent.com/42303378/73076992-8d636b00-3ebf-11ea-8445-1fdc01e586e8.JPG)
-![](https://user-images.githubusercontent.com/42303378/73076996-8f2d2e80-3ebf-11ea-9697-dee5443134fa.JPG)
+### Database
 
-När en sida hämtar data från databasen, routern anropas metoderna från modellen. Till exempel, för att hämta alla personer som finns i tabellen *customers* i databasen, vid sidan laddning anropas routern metoden *getAllCustomers()* som har en *query* som tar alla personen i tabellen. Denna information sparats i en *Array* som kan sen användas i en *view* och kan visas på en sida.  Model.php är den endast filen som kan ansluta till databasen.
+The database includes the following tables
 
-Här är de *queries* använts för att skapa alla tabeller i databasen:
+- customers
 
-```
-CREATE TABLE customers (
-    person_number varchar(20) NOT NULL PRIMARY KEY,
-    name varchar(256) NOT NULL,
-    adress varchar(256) NOT NULL,
-    postal_code int(5) NOT NULL,
-    phone varchar(20) NOT NULL
+- cars
+
+- history
+
+- makes
+
+- colors
+
+### Run the app
+
+The app can be checked following this link: 
+
+http://enzo.zerega.chas.academy/u05-car-rental/
+
+**Install locally**
+
+You should have MySQL installed in your environment and an running server that can handle database requests like Apache Server.
+
+Create the database and tables, and add some dummy data using the following queries:
+
+````sql
+create database rentacar;
+
+use rentacar;
+
+create table customers (
+    person_number varchar(20) not null primary key,
+    name varchar(256) not null,
+    adress varchar(256) not null,
+    postal_code int(5) not null,
+    phone varchar(20) not null
 );
 
-CREATE TABLE cars (
-    register_number varchar(10) NOT NULL PRIMARY KEY,
-    make varchar(256) NOT NULL,
-    color varchar(256) NOT NULL,
-    year int(4) NOT NULL,
-    price float(10,2) NOT NULL
+create table cars (
+    register_number varchar(10) not null primary key,
+    make varchar(256) not null,
+    color varchar(256) not null,
+    year int(4) not null,
+    price float(10,2) not null
 );
 
-CREATE TABLE history (
-    id int(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    register_number varchar(10) NOT NULL,
-    person_number varchar(20) NOT NULL,
+create table history (
+    id int(20) not null primary key AUTO_INCREMENT,
+    register_number varchar(10) not null,
+    person_number varchar(20) not null,
     FOREIGN KEY (register_number) REFERENCES cars (register_number) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (person_number) REFERENCES customers (person_number) ON UPDATE CASCADE ON DELETE CASCADE,
     checked_in datetime,
     checked_out datetime
 );
 
-CREATE TABLE makes (
-    id int(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    make varchar(20) NOT NULL
+insert into customers (person_number, name, adress, postal_code, phone) values (9309230465, 'Hermione Granger', 'Fall River Avenue 1105', '11190', '0739756160');
+insert into customers (person_number, name, adress, postal_code, phone) values (9002152677, 'Ron Weasley', 'Charlton Road 100', '19360', '0769756160');
+insert into customers (person_number, name, adress, postal_code, phone) values (5702130161, 'Sirius Black', 'Palmer Road 352', '19460', '0729756160');
+insert into customers (person_number, name, adress, postal_code, phone) values (7405314563, 'Rubeus Hagrid', 'Washington Ave Extension 141', '15160', '0709756160');
+insert into customers (person_number, name, adress, postal_code, phone) values (8205030789, 'Draco Malfoy', 'Niagara Falls Blvd 2055', '19120', '0729756160');
+insert into customers (person_number, name, adress, postal_code, phone) values (4502148200, 'Severus Snape', 'Crooked Hill Road 85', '19120', '0749756160');
+
+insert into cars (register_number, make, color, year, price) values ('ABD345', 'Peugeot', 'Green', '2010', '100');
+insert into cars (register_number, make, color, year, price) values ('JGH578', 'Fiat', 'Green', '2015', '150');
+insert into cars (register_number, make, color, year, price) values ('GDH645', 'Honda', 'White', '2013', '120');
+insert into cars (register_number, make, color, year, price) values ('KDJ736', 'Hyundai', 'Blue', '2013', '120');
+insert into cars (register_number, make, color, year, price) values ('JUH674', 'Toyota', 'Black', '2014', '300');
+insert into cars (register_number, make, color, year, price) values ('FTE564', 'Chrysler', 'Red', '2015', '200');
+
+create table makes (
+    id int(20) not null primary key AUTO_INCREMENT,
+    make varchar(20) not null
 );
 
-CREATE TABLE colors (
-    id int(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    color varchar(20) NOT NULL
+insert into makes (make) values ('Peugeot'), ('Suzuki'), ('Fiat'), ('Honda'), ('Hyundai'), ('Renault'), ('Toyota'), ('Volkswagen'), ('Chrysler');
+
+create table colors (
+    id int(20) not null primary key AUTO_INCREMENT,
+    color varchar(20) not null
 );
-```
+
+insert into colors (color) values ('Blue'), ('Red'), ('Green'), ('Yellow'), ('Black'), ('White'), ('Magenta'), ('Orange'), ('Grey'), ('Brown');
+
+insert into history (register_number, person_number, checked_in, checked_out) values ('GDH645', '5702130161', '2020-01-23 01:01:22', '2020-01-15 11:05:27');
+insert into history (register_number, person_number, checked_in, checked_out) values ('FTE564', '8205030789', '2020-01-21 14:00:22', '2020-01-10 13:31:50');
+insert into history (register_number, person_number, checked_in, checked_out) values ('GDH645', '4502148200', '2020-01-13 01:01:22', '2020-01-03 14:15:47');
+insert into history (register_number, person_number, checked_in, checked_out) values ('KDJ736', '8205030789', '2020-01-20 14:05:46', '2020-01-04 13:31:50');
+
+````
+
+Download the `public` folder.  Change the values for your local database in the ` Dbh.php` file (username, password, etc.)  and run `php -S localhost:8000` (use other port if you prefer). For this, PHP must be installed. 

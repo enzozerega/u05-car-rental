@@ -1,4 +1,20 @@
 {% include 'MainMenuView.twig' %}
-<main>
-        <p>The customer was edited successfully</p>
-</main>
+    <section class="content">
+        <div class="container">
+            <div class="title-heading">
+                <h1>Customers</h1>
+            </div>
+        <p>The customer was edited successfully.</p>
+        <div class="cta center">
+            <a class="btn btn-blue" href="/customers">Go back</a>
+        </div>        
+    </section>
+    <script>
+        // Add current class to nav-link
+        for (let elem of document.querySelectorAll(".nav-link")) {
+            if (elem.textContent === "Customers") {
+                elem.classList.add("current");
+            }
+        }
+    </script>
+{% include 'footerView.twig' %}

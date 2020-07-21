@@ -4,6 +4,6 @@
     
     class MainController {
         public function mainMenu($twig) {
-            return $twig->render("MainMenuView.twig");
+            return $twig->render("landingPageView.twig");
         }
     }
