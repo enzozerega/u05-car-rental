@@ -10,11 +10,11 @@ The app:
 
 - queries data from a relational database.
 
-### Screenshots
+## Screenshots
 
 ![screenshot](./public/screenshot.png)
 
-### Database
+## Database
 
 The database includes the following tables
 
@@ -28,7 +28,7 @@ The database includes the following tables
 
 - colors
 
-### Run the app
+## Run the app
 
 The app can be checked following this link: 
 
