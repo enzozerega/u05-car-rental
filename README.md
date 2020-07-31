@@ -32,7 +32,7 @@ The database includes the following tables
 
 The app can be checked following this link: 
 
-http://enzo.zerega.chas.academy/u05-php-car-rental/
+http://enzo.zerega.chas.academy/u05-car-rental/
 
 **Install locally**
 
