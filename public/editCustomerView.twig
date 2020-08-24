@@ -5,7 +5,7 @@
             <div class="title-heading">
                 <h1>Edit customer</h1>
             </div>
-            <form class="form-md" method="POST" action="/u05-car-rental/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
+            <form class="form-md" method="POST" action="/customerEdited{{selectedCustomer.person_number}}" name="form" onsubmit="return validateForm();">
                 <div class="form-group">
                     <span class="label-disabled">Personal Number</span>
                     <input class="form-field" type="text" name="personnumber" value="{{selectedCustomer.person_number}}" disabled>
@@ -31,7 +31,7 @@
                 </div>
             </form>
             <div class="cta center">
-                <a class="btn btn-alert" href="/u05-car-rental/customers">Discard changes</a>
+                <a class="btn btn-alert" href="/customers">Discard changes</a>
             </div>  
         </div>
 
