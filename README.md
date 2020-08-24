@@ -30,9 +30,9 @@ The database includes the following tables
 
 ## Run the app
 
-The app can be checked following this link: 
+The app can be checked following this link:
 
-http://enzo.zerega.chas.academy/u05-car-rental/
+https://u05-php-car-rental.herokuapp.com/
 
 **Install locally**
 
